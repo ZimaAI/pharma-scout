@@ -19,6 +19,45 @@ https://github.com/user-attachments/assets/a8bcadc4-e040-4cf2-8fda-dd768b999c18
 > [!NOTE]
 > **DeerFlow 2.0 is a ground-up rewrite.** It shares no code with v1. If you're looking for the original Deep Research framework, it's maintained on the [`1.x` branch](https://github.com/bytedance/deer-flow/tree/main-1.x) — contributions there are still welcome. Active development has moved to 2.0.
 
+## PharmaScope: pharmaceutical research intelligence
+
+This deployment adds a Chinese-language research workspace at `/pharma` and makes
+it the home-page entry. The original general assistant remains at `/workspace`.
+PharmaScope tracks drug identities, ClinicalTrials.gov and PubMed observations,
+immutable source snapshots, evidence-backed report versions, independent review,
+subscriptions, and in-app delivery. Its UI follows [design.md](design.md).
+
+Research uses the existing DeerFlow agent loop with nine scoped domain tools,
+server-owned workspace context, bounded budgets, cancellation, and persistent
+execution events. Reports retain their knowledge cutoff and source coverage;
+approval binds the exact version and content hash. A separate, visibly marked
+DEMO workspace uses fictional records and explicit replay.
+
+**Current delivery scope:** deploy the application first and configure a real
+model later. LIVE research requires an operator-configured model and fails
+explicitly when none is available; it never substitutes replay. Real-model
+quality acceptance remains outstanding. Source text and draft claims still need
+human review; the application is not an individual treatment recommendation tool.
+Email delivery stays disabled until explicitly configured, and interrupted agent
+runs require a new attempt rather than checkpoint recovery.
+
+The domain backend requires PostgreSQL and a separate worker. Keep database and
+session credentials outside Git. After configuration, root-level commands are:
+
+```bash
+make migrate       # Apply PharmaScope database migrations
+make seed-demo     # Seed the separate fictional demo workspace
+make pharma-worker # Run the durable domain worker
+make pharma-test   # Domain unit and isolated PostgreSQL integration tests
+make test-e2e      # Real-browser tests against a prepared local stack
+make verify-docs   # Validate the reference-document contract set
+```
+
+See the [deployment and rollback guide](docs/pharma-deployment-handoff.md),
+[backend handoff](BACKEND_HANDOFF.md), [runtime validation record](docs/pharma-runtime-validation.md),
+and [source adapter validation](docs/pharma-source-validation.md) for configuration,
+private test credentials, tested boundaries, and remaining acceptance work.
+
 ## Official Website
 
 Learn more and see **real demos** on our [**official website**](https://deerflow.tech).
@@ -55,6 +94,7 @@ DeerFlow has newly integrated the intelligent search and crawling toolset indepe
 ## Table of Contents
 
 - [🦌 DeerFlow - 2.0](#-deerflow---20)
+  - [PharmaScope: pharmaceutical research intelligence](#pharmascope-pharmaceutical-research-intelligence)
   - [Official Website](#official-website)
   - [Coding Plan from ByteDance Volcengine](#coding-plan-from-bytedance-volcengine)
   - [InfoQuest](#infoquest)

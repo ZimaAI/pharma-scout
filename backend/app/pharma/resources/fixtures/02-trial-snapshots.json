@@ -1,0 +1,233 @@
+[
+  {
+    "id": "6d3076c2-eb02-5775-85a8-e503646289e4",
+    "workspace_id": "dee59b72-2cb2-5255-934c-b44a3fd8911c",
+    "created_at": "2026-09-14T08:00:00Z",
+    "record_id": "5955a8ed-90e9-58d8-8c40-98d7a005598e",
+    "content_hash": "7f189657871ba9174987de9fd3c2a8a1bea3dcf51e3e759229e8572f15c9d30d",
+    "normalizer_version": "demo-ctgov-v1",
+    "raw_payload": {
+      "demo_only": true,
+      "external_id": "DEMO-CT-001",
+      "projection": {
+        "title": "PX-101演示适应证A试验（完全虚构）",
+        "raw_status": "RECRUITING",
+        "status": "RECRUITING",
+        "phases": [
+          "PHASE2"
+        ],
+        "conditions": [
+          "演示适应证A"
+        ],
+        "sponsor": "虚构研究组织",
+        "enrollment": {
+          "count": 120,
+          "type": "estimated"
+        },
+        "has_results": false,
+        "source_updated": {
+          "value": "2026-09-14",
+          "precision": "day",
+          "kind": "source_reported"
+        },
+        "primary_outcomes": [
+          {
+            "measure": "演示终点字段",
+            "description": "仅用于结构测试，无真实临床含义",
+            "time_frame": "演示窗口"
+          }
+        ]
+      }
+    },
+    "normalized": {
+      "title": "PX-101演示适应证A试验（完全虚构）",
+      "raw_status": "RECRUITING",
+      "status": "RECRUITING",
+      "phases": [
+        "PHASE2"
+      ],
+      "conditions": [
+        "演示适应证A"
+      ],
+      "sponsor": "虚构研究组织",
+      "enrollment": {
+        "count": 120,
+        "type": "estimated"
+      },
+      "has_results": false,
+      "source_updated": {
+        "value": "2026-09-14",
+        "precision": "day",
+        "kind": "source_reported"
+      },
+      "primary_outcomes": [
+        {
+          "measure": "演示终点字段",
+          "description": "仅用于结构测试，无真实临床含义",
+          "time_frame": "演示窗口"
+        }
+      ]
+    },
+    "source_updated": {
+      "value": "2026-09-14",
+      "precision": "day",
+      "kind": "source_reported"
+    },
+    "first_observed_at": "2026-09-14T08:00:00Z",
+    "is_demo": true
+  },
+  {
+    "id": "a52263c2-74fb-5aa8-9dd8-fbd12fc51902",
+    "workspace_id": "dee59b72-2cb2-5255-934c-b44a3fd8911c",
+    "created_at": "2026-09-16T08:00:00Z",
+    "record_id": "5955a8ed-90e9-58d8-8c40-98d7a005598e",
+    "content_hash": "3ddfac0f343bd7395935d60776029be4131d21637511a246477d935cbc03d957",
+    "normalizer_version": "demo-ctgov-v1",
+    "raw_payload": {
+      "demo_only": true,
+      "external_id": "DEMO-CT-001",
+      "projection": {
+        "title": "PX-101演示适应证A试验（完全虚构）",
+        "raw_status": "ACTIVE_NOT_RECRUITING",
+        "status": "ACTIVE_NOT_RECRUITING",
+        "phases": [
+          "PHASE2"
+        ],
+        "conditions": [
+          "演示适应证A"
+        ],
+        "sponsor": "虚构研究组织",
+        "enrollment": {
+          "count": 160,
+          "type": "estimated"
+        },
+        "has_results": false,
+        "source_updated": {
+          "value": "2026-09-16",
+          "precision": "day",
+          "kind": "source_reported"
+        },
+        "primary_outcomes": [
+          {
+            "measure": "演示终点字段",
+            "description": "仅用于结构测试，无真实临床含义",
+            "time_frame": "演示窗口"
+          }
+        ]
+      }
+    },
+    "normalized": {
+      "title": "PX-101演示适应证A试验（完全虚构）",
+      "raw_status": "ACTIVE_NOT_RECRUITING",
+      "status": "ACTIVE_NOT_RECRUITING",
+      "phases": [
+        "PHASE2"
+      ],
+      "conditions": [
+        "演示适应证A"
+      ],
+      "sponsor": "虚构研究组织",
+      "enrollment": {
+        "count": 160,
+        "type": "estimated"
+      },
+      "has_results": false,
+      "source_updated": {
+        "value": "2026-09-16",
+        "precision": "day",
+        "kind": "source_reported"
+      },
+      "primary_outcomes": [
+        {
+          "measure": "演示终点字段",
+          "description": "仅用于结构测试，无真实临床含义",
+          "time_frame": "演示窗口"
+        }
+      ]
+    },
+    "source_updated": {
+      "value": "2026-09-16",
+      "precision": "day",
+      "kind": "source_reported"
+    },
+    "first_observed_at": "2026-09-16T08:00:00Z",
+    "is_demo": true
+  },
+  {
+    "id": "a1ec229b-4119-55d1-8b7c-b9380a84d8f5",
+    "workspace_id": "dee59b72-2cb2-5255-934c-b44a3fd8911c",
+    "created_at": "2026-09-17T08:00:00Z",
+    "record_id": "5955a8ed-90e9-58d8-8c40-98d7a005598e",
+    "content_hash": "c9027a7bea67c83bedd696b041db3ff61fa29359a86ac9f1deb5b46b5496d9e8",
+    "normalizer_version": "demo-ctgov-v1",
+    "raw_payload": {
+      "demo_only": true,
+      "external_id": "DEMO-CT-001",
+      "projection": {
+        "title": "PX-101演示适应证A试验（完全虚构）",
+        "raw_status": "ACTIVE_NOT_RECRUITING",
+        "status": "ACTIVE_NOT_RECRUITING",
+        "phases": [
+          "PHASE2"
+        ],
+        "conditions": [
+          "演示适应证A"
+        ],
+        "sponsor": "虚构研究组织",
+        "enrollment": {
+          "count": 150,
+          "type": "estimated"
+        },
+        "has_results": false,
+        "source_updated": {
+          "value": "2026-09-17",
+          "precision": "day",
+          "kind": "source_reported"
+        },
+        "primary_outcomes": [
+          {
+            "measure": "演示终点字段",
+            "description": "仅用于结构测试，无真实临床含义",
+            "time_frame": "演示窗口"
+          }
+        ]
+      }
+    },
+    "normalized": {
+      "title": "PX-101演示适应证A试验（完全虚构）",
+      "raw_status": "ACTIVE_NOT_RECRUITING",
+      "status": "ACTIVE_NOT_RECRUITING",
+      "phases": [
+        "PHASE2"
+      ],
+      "conditions": [
+        "演示适应证A"
+      ],
+      "sponsor": "虚构研究组织",
+      "enrollment": {
+        "count": 150,
+        "type": "estimated"
+      },
+      "has_results": false,
+      "source_updated": {
+        "value": "2026-09-17",
+        "precision": "day",
+        "kind": "source_reported"
+      },
+      "primary_outcomes": [
+        {
+          "measure": "演示终点字段",
+          "description": "仅用于结构测试，无真实临床含义",
+          "time_frame": "演示窗口"
+        }
+      ]
+    },
+    "source_updated": {
+      "value": "2026-09-17",
+      "precision": "day",
+      "kind": "source_reported"
+    },
+    "first_observed_at": "2026-09-17T08:00:00Z",
+    "is_demo": true
+  }
+]

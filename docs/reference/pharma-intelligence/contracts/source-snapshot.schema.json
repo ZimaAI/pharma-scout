@@ -396,6 +396,59 @@
             ],
             "additionalProperties": false
           }
+        },
+        "start_date": {
+          "$ref": "#/$defs/DateValue"
+        },
+        "primary_completion_date": {
+          "$ref": "#/$defs/DateValue"
+        },
+        "completion_date": {
+          "$ref": "#/$defs/DateValue"
+        },
+        "interventions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "type": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "description": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "arm_group_labels": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "name",
+              "type",
+              "description",
+              "arm_group_labels"
+            ],
+            "additionalProperties": false
+          }
         }
       },
       "required": [

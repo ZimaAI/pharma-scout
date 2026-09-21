@@ -222,3 +222,19 @@ down:
 # Follow production container logs (stack started by `make up`)
 prod-logs:
 	@$(RUN_SHELL_SCRIPT) ./scripts/docker.sh logs --prod
+
+# PharmaScope domain workflow; the original full-stack targets remain intact.
+.PHONY: migrate seed-demo pharma-worker pharma-test test test-e2e verify-docs
+migrate:
+	@backend/.venv/bin/python scripts/pharma.py migrate
+seed-demo:
+	@backend/.venv/bin/python scripts/pharma.py seed-demo
+pharma-worker:
+	@backend/.venv/bin/python scripts/pharma.py worker
+pharma-test:
+	@backend/.venv/bin/python scripts/pharma.py test
+test: pharma-test
+test-e2e:
+	@$(PYTHON) scripts/pnpm.py exec playwright test --config=playwright.pharma.config.ts
+verify-docs:
+	@backend/.venv/bin/python scripts/pharma.py verify-docs

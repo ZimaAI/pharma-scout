@@ -1,0 +1,90 @@
+[
+  {
+    "schema_version": "1.0",
+    "run_id": "0ea32fa2-01c1-5aed-a9b1-d0fa7bd00b8a",
+    "seq": 1,
+    "occurred_at": "2026-09-16T12:00:01Z",
+    "type": "run.queued",
+    "payload": {
+      "runtime_mode": "replay"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "run_id": "0ea32fa2-01c1-5aed-a9b1-d0fa7bd00b8a",
+    "seq": 2,
+    "occurred_at": "2026-09-16T12:00:02Z",
+    "type": "run.started",
+    "payload": {
+      "runtime_mode": "replay"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "run_id": "0ea32fa2-01c1-5aed-a9b1-d0fa7bd00b8a",
+    "seq": 3,
+    "occurred_at": "2026-09-16T12:00:03Z",
+    "type": "plan.updated",
+    "payload": {
+      "summary": "对比已授权试验观察，检查文献覆盖。"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "run_id": "0ea32fa2-01c1-5aed-a9b1-d0fa7bd00b8a",
+    "seq": 4,
+    "occurred_at": "2026-09-16T12:00:04Z",
+    "type": "tool.started",
+    "payload": {
+      "call_id": "8c0a3702-27f9-5f83-9c7f-4caa7f0a9558",
+      "tool": "compare_trial_observations"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "run_id": "0ea32fa2-01c1-5aed-a9b1-d0fa7bd00b8a",
+    "seq": 5,
+    "occurred_at": "2026-09-16T12:00:05Z",
+    "type": "tool.completed",
+    "payload": {
+      "call_id": "8c0a3702-27f9-5f83-9c7f-4caa7f0a9558",
+      "tool": "compare_trial_observations",
+      "evidence_count": 2
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "run_id": "0ea32fa2-01c1-5aed-a9b1-d0fa7bd00b8a",
+    "seq": 6,
+    "occurred_at": "2026-09-16T12:00:06Z",
+    "type": "evidence.added",
+    "payload": {
+      "evidence_ids": [
+        "330cc932-3bdb-5ea8-8006-c3f8f5ed530d",
+        "d02d63c2-b5ec-52ef-b96a-61552b947249"
+      ]
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "run_id": "0ea32fa2-01c1-5aed-a9b1-d0fa7bd00b8a",
+    "seq": 7,
+    "occurred_at": "2026-09-16T12:00:07Z",
+    "type": "report.ready",
+    "payload": {
+      "report_id": "598c1318-133d-5ac8-adf6-f008e782cec0",
+      "runtime_mode": "replay"
+    }
+  },
+  {
+    "schema_version": "1.0",
+    "run_id": "0ea32fa2-01c1-5aed-a9b1-d0fa7bd00b8a",
+    "seq": 8,
+    "occurred_at": "2026-09-16T12:00:08Z",
+    "type": "run.completed",
+    "payload": {
+      "runtime_mode": "replay",
+      "stop_reason": "answered"
+    }
+  }
+]

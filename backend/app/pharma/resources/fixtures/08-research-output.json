@@ -1,0 +1,107 @@
+{
+  "schema_version": "1.0",
+  "title": "PX-101虚构试验记录变化研究简报",
+  "summary": "在演示数据中，试验注册记录的目标入组数量发生变化。这一字段变化不能证明疗效、安全性或批准状态。",
+  "scope": {
+    "drug_ids": [
+      "dd1dcb81-e4b6-5343-b4a6-544bf716d867"
+    ],
+    "time_range": {
+      "start": "2026-09-14T00:00:00Z",
+      "end_exclusive": "2026-09-17T00:00:00Z",
+      "timezone": "Asia/Shanghai"
+    },
+    "knowledge_cutoff": "2026-09-16T12:00:00Z"
+  },
+  "coverage": [
+    {
+      "source": "ctgov",
+      "status": "complete",
+      "records_count": 1,
+      "truncated": false,
+      "as_of": "2026-09-16T08:00:00Z",
+      "limitations": [
+        "仅覆盖这一条虚构记录。"
+      ]
+    },
+    {
+      "source": "pubmed",
+      "status": "complete",
+      "records_count": 0,
+      "truncated": false,
+      "as_of": "2026-09-16T08:00:00Z",
+      "limitations": [
+        "此演示时间点未注入虚构文献，不代表真实世界没有文献。"
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "heading": "注册记录变化",
+      "text": "目标入组数量在两次观察之间发生变化，详见C1。",
+      "claim_keys": [
+        "C1"
+      ]
+    },
+    {
+      "heading": "限制",
+      "text": "资料不支持任何疗效、安全性或监管结论。",
+      "claim_keys": [
+        "C2"
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "claim_key": "C1",
+      "statement": "虚构记录DEMO-CT-001的目标入组人数从120调整为160。",
+      "category": "fact",
+      "qualifiers": {
+        "population": null,
+        "trial_ids": [
+          "5955a8ed-90e9-58d8-8c40-98d7a005598e"
+        ],
+        "time_scope": "2026-09-14至2026-09-16的系统观察",
+        "limitations": [
+          "estimated人数，不是实际入组完成数。"
+        ]
+      },
+      "evidence_links": [
+        {
+          "evidence_id": "330cc932-3bdb-5ea8-8006-c3f8f5ed530d",
+          "relation": "supports"
+        },
+        {
+          "evidence_id": "d02d63c2-b5ec-52ef-b96a-61552b947249",
+          "relation": "supports"
+        }
+      ]
+    },
+    {
+      "claim_key": "C2",
+      "statement": "本次资料不足以形成药物疗效、安全性或监管批准结论。",
+      "category": "gap",
+      "qualifiers": {
+        "population": null,
+        "trial_ids": [
+          "5955a8ed-90e9-58d8-8c40-98d7a005598e"
+        ],
+        "time_scope": null,
+        "limitations": [
+          "演示资料范围有限。"
+        ]
+      },
+      "evidence_links": []
+    }
+  ],
+  "limitations": [
+    "全部对象和数据均为虚构，仅用于系统开发与流程演示。",
+    "此报告不是医疗建议。"
+  ],
+  "unanswered_questions": [
+    "后续是否有经过核对的结果资料？"
+  ],
+  "event_revision_ids": [
+    "2f97c548-4f0c-504d-aa1e-66da3dbcc4d6"
+  ]
+}

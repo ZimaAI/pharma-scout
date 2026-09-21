@@ -1,0 +1,289 @@
+{
+  "schema_version": "1.0",
+  "authority": "RuntimeContext injected server-side; no user/workspace/secret/recipient input",
+  "tools": [
+    {
+      "name": "resolve_drug",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 20
+          }
+        },
+        "required": [
+          "text"
+        ],
+        "additionalProperties": false
+      },
+      "effect": "read",
+      "output_contract": "approved candidates; ambiguity flag",
+      "requires_budget": true,
+      "requires_scope_check": true
+    },
+    {
+      "name": "search_trials",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "drug_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "filters": {
+            "type": "object",
+            "properties": {
+              "status": {
+                "type": "string"
+              },
+              "has_results": {
+                "type": "boolean"
+              }
+            },
+            "required": [],
+            "additionalProperties": false
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 20
+          }
+        },
+        "required": [
+          "drug_id"
+        ],
+        "additionalProperties": false
+      },
+      "effect": "read_external",
+      "output_contract": "record_refs, coverage, cursor",
+      "requires_budget": true,
+      "requires_scope_check": true
+    },
+    {
+      "name": "search_publications",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "drug_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "terms": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000
+          },
+          "date_range": {
+            "type": "object",
+            "properties": {
+              "start": {
+                "type": "string",
+                "format": "date"
+              },
+              "end_exclusive": {
+                "type": "string",
+                "format": "date"
+              }
+            },
+            "required": [
+              "start",
+              "end_exclusive"
+            ],
+            "additionalProperties": false
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 20
+          }
+        },
+        "required": [
+          "drug_id"
+        ],
+        "additionalProperties": false
+      },
+      "effect": "read_external",
+      "output_contract": "record_refs, coverage, cursor",
+      "requires_budget": true,
+      "requires_scope_check": true
+    },
+    {
+      "name": "read_source_snapshot",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "snapshot_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "sections": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 10
+          }
+        },
+        "required": [
+          "snapshot_id"
+        ],
+        "additionalProperties": false
+      },
+      "effect": "read",
+      "output_contract": "excerpt/evidence refs, snapshot metadata",
+      "requires_budget": true,
+      "requires_scope_check": true
+    },
+    {
+      "name": "compare_trial_observations",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "trial_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "before_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "after_id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "trial_id",
+          "before_id",
+          "after_id"
+        ],
+        "additionalProperties": false
+      },
+      "effect": "read",
+      "output_contract": "typed changes and evidence refs",
+      "requires_budget": true,
+      "requires_scope_check": true
+    },
+    {
+      "name": "search_workspace_evidence",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000
+          },
+          "drug_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "minItems": 1,
+            "maxItems": 5
+          },
+          "cutoff": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 20
+          }
+        },
+        "required": [
+          "query",
+          "drug_ids",
+          "cutoff"
+        ],
+        "additionalProperties": false
+      },
+      "effect": "read",
+      "output_contract": "authorized evidence matches",
+      "requires_budget": true,
+      "requires_scope_check": true
+    },
+    {
+      "name": "inspect_evidence",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "minItems": 1,
+            "maxItems": 10
+          }
+        },
+        "required": [
+          "evidence_ids"
+        ],
+        "additionalProperties": false
+      },
+      "effect": "read",
+      "output_contract": "evidence with exact locator and source version",
+      "requires_budget": true,
+      "requires_scope_check": true
+    },
+    {
+      "name": "request_clarification",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "question": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000
+          },
+          "options": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1000
+            },
+            "minItems": 2,
+            "maxItems": 6
+          }
+        },
+        "required": [
+          "question"
+        ],
+        "additionalProperties": false
+      },
+      "effect": "workflow",
+      "output_contract": "clarification card or background scope gap",
+      "requires_budget": true,
+      "requires_scope_check": true
+    },
+    {
+      "name": "submit_research_draft",
+      "input_schema": {
+        "$ref": "./research-output.schema.json"
+      },
+      "effect": "write_draft_only",
+      "output_contract": "candidate_id and checks; never publication",
+      "requires_budget": true,
+      "requires_scope_check": true
+    }
+  ],
+  "envelope": {
+    "ok": "boolean",
+    "data": "typed per-tool payload or null",
+    "error": "code/message/retryable or null",
+    "coverage": "source coverage",
+    "provenance": "snapshot/evidence/source request refs"
+  }
+}

@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-The backend runs a LangGraph-based super agent with sandbox execution, persistent memory, subagent delegation, and extensible tools in isolated per-thread environments.
+LangGraph agents use thread-isolated sandboxes, memory, subagents and extensible tools.
 
 **Architecture**:
 - **Gateway API** (port 8001): REST API plus embedded LangGraph-compatible agent runtime
@@ -387,12 +387,9 @@ For models with `supports_vision: true`:
 
 ## Documentation
 
-See `docs/` directory for detailed documentation:
-- [CONFIGURATION.md](docs/CONFIGURATION.md) - Configuration options
-- [ARCHITECTURE.md](docs/ARCHITECTURE.md) - Architecture details
-- [API.md](docs/API.md) - API reference
-- [SETUP.md](docs/SETUP.md) - Setup guide
-- [FILE_UPLOAD.md](docs/FILE_UPLOAD.md) - File upload feature
-- [PATH_EXAMPLES.md](docs/PATH_EXAMPLES.md) - Path types and usage
-- [summarization.md](docs/summarization.md) - Context summarization
-- [plan_mode_usage.md](docs/plan_mode_usage.md) - Plan mode with TodoList
+See [configuration](docs/CONFIGURATION.md), [architecture](docs/ARCHITECTURE.md),
+[API](docs/API.md), [setup](docs/SETUP.md), [uploads](docs/FILE_UPLOAD.md),
+[paths](docs/PATH_EXAMPLES.md), [summarization](docs/summarization.md) and
+[plan mode](docs/plan_mode_usage.md).
+
+PharmaScope: [app/pharma/AGENTS.md](app/pharma/AGENTS.md).

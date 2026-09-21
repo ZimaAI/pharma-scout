@@ -14,6 +14,9 @@ dependencies = [
     # app declares them rather than relying on the harness to keep supplying it.
     "deerflow-extension-api",
     "fastapi>=0.115.0",
+    "psycopg[binary]>=3.2.0",
+    "argon2-cffi>=23.1.0",
+    "jsonschema>=4.26.0",
     "httpx>=0.28.0",
     "python-multipart>=0.0.31",
     "sse-starlette>=2.1.0",

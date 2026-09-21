@@ -22,6 +22,20 @@ rs.mock("next/navigation", () => ({
   useSearchParams: () => new URLSearchParams(),
 }));
 
+// isMock routes the SDK to fixture URLs, but still loads its checkpoint history.
+// This permission test has no stream server; keep the SDK idle at its boundary.
+rs.mock("@langchain/langgraph-sdk/react", () => {
+  const stream = {
+    isLoading: false,
+    messages: [],
+    values: { messages: [], artifacts: [], title: "", todos: [] },
+    stop: async () => undefined,
+    submit: async () => undefined,
+    joinStream: async () => undefined,
+  };
+  return { useStream: () => stream };
+});
+
 // The panel's model list is irrelevant to the delete-button gating; keep the
 // react-query machinery out of the way entirely.
 rs.mock("@/core/models/hooks", () => ({

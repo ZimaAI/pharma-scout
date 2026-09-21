@@ -1,0 +1,57 @@
+# Overlay: docker compose --env-file .env -f docker/docker-compose.yaml
+# -f docker/docker-compose.pharma.yaml up -d --build
+# Secrets and database URL belong in .env; no public database port.
+services:
+  pharma-postgres:
+    image: postgres:16.13-bookworm
+    environment:
+      POSTGRES_USER: pharma
+      POSTGRES_DB: pharmascope
+      POSTGRES_PASSWORD: ${PHARMA_POSTGRES_PASSWORD:?Set a private PostgreSQL password}
+    volumes:
+      - pharma-postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U pharma -d pharmascope"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    networks: [deer-flow]
+    restart: unless-stopped
+  gateway:
+    environment:
+      PHARMA_DATABASE_URL: ${PHARMA_DATABASE_URL:?Configure Pharma database URL}
+      PHARMA_ALLOWED_ORIGINS: ${PHARMA_ALLOWED_ORIGINS:-http://localhost:2026}
+      PHARMA_COOKIE_SECURE: ${PHARMA_COOKIE_SECURE:-false}
+    depends_on:
+      pharma-postgres:
+        condition: service_healthy
+  pharma-worker:
+    build:
+      context: ../
+      dockerfile: backend/Dockerfile
+    command: [sh, -c, "cd backend && uv run --no-sync python -m app.pharma.cli migrate && uv run --no-sync python -m app.pharma.worker"]
+    working_dir: /app
+    env_file:
+      - ../.env
+    environment:
+      PHARMA_DATABASE_URL: ${PHARMA_DATABASE_URL:?Configure Pharma database URL}
+      DEER_FLOW_CONFIG_PATH: /app/backend/config.yaml
+      PHARMA_MODEL_NAME: ${PHARMA_MODEL_NAME:-}
+      PHARMA_SMTP_ENABLED: ${PHARMA_SMTP_ENABLED:-0}
+      PHARMA_SMTP_HOST: mailpit
+      PHARMA_SMTP_PORT: "1025"
+      PHARMA_SMTP_FROM: pharmascope@localhost.invalid
+    volumes:
+      - ${DEER_FLOW_CONFIG_PATH}:/app/backend/config.yaml:ro
+    depends_on:
+      pharma-postgres:
+        condition: service_healthy
+    networks: [deer-flow]
+    restart: unless-stopped
+  mailpit:
+    image: axllent/mailpit:v1.29.2
+    ports: ["127.0.0.1:8025:8025"]
+    networks: [deer-flow]
+    restart: unless-stopped
+volumes:
+  pharma-postgres:

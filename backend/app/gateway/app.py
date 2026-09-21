@@ -1051,3 +1051,9 @@ This gateway provides runtime endpoints for agent runs plus custom endpoints for
 
 # Create app instance for uvicorn
 app = create_app()
+
+# The domain application owns a separate session/workspace boundary. This outer
+# dispatcher leaves the existing general-purpose Gateway middleware untouched.
+from app.pharma.dispatcher import PharmaDispatcher  # noqa: E402
+
+app.add_middleware(PharmaDispatcher)

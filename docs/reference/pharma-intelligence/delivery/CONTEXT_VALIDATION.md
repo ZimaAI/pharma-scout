@@ -3,7 +3,7 @@
 生成日期：2026-09-21。以下仅验证文档与样例，不代表平台软件已实现。
 
 - PASS：All JSON files parse
-- PASS：68 OpenAPI operations: refs, unique IDs, path parameters and response presence checked
+- PASS：71 OpenAPI operations: refs, unique IDs, path parameters and response presence checked
 - PASS：Standalone JSON Schemas pass Draft202012 meta-schema and local reference checks
 - PASS：All typed fixtures validate against the API schemas
 - PASS：Fixture snapshot hashes, evidence locators, quote hashes and workspace refs are consistent

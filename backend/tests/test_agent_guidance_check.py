@@ -38,6 +38,8 @@ EXPECTED_GUIDANCE_PATHS = {
     "backend/packages/harness/deerflow/tui/AGENTS.md",
     "backend/packages/harness/deerflow/utils/AGENTS.md",
     "frontend/src/AGENTS.md",
+    "docs/reference/pharma-intelligence/AGENTS.md",
+    "backend/app/pharma/AGENTS.md",
     "scripts/AGENTS.md",
 }
 

@@ -1,16 +1,37 @@
 {
   "repository": "https://github.com/bytedance/deer-flow",
   "target_line": "2.x",
-  "commit_sha": null,
+  "commit_sha": "29d285731b326a728a9df33d3641f73b68bbe48b",
+  "integration_checkout_sha": "c8796e41b0cc2e3132c5514035b2e015017ead89",
   "observed_docs_on": "2026-09-21",
-  "status": "NEEDS_M0_VERIFICATION",
-  "python_version": null,
-  "node_version": null,
+  "status": "OFFLINE_COMPATIBLE_LIVE_MODEL_BLOCKED",
+  "python_version": "3.12.3",
+  "node_version": "24.17.0",
+  "dependency_lock": "backend/uv.lock",
+  "dependency_versions": {
+    "deerflow-harness": "2.1.0",
+    "langchain": "1.3.14",
+    "langchain-core": "1.4.9",
+    "langgraph": "1.2.9",
+    "langchain-openai": "1.2.1",
+    "jsonschema": "4.26.0"
+  },
+  "adapter_entrypoint": "deerflow.agents.factory.create_deerflow_agent",
+  "integration_mode": "vendored-existing-monorepo-harness",
   "probe_results": {
-    "custom_tool": "NOT_RUN",
-    "trusted_context": "NOT_RUN",
-    "cancellation": "NOT_RUN",
-    "checkpoint_recovery": "NOT_RUN",
-    "dangerous_tools_disabled": "NOT_RUN"
+    "custom_tool": "PASS_OFFLINE_ACTUAL_GRAPH",
+    "trusted_context": "PASS_OFFLINE_CONCURRENT_RUNS",
+    "cancellation": "PASS_OFFLINE_INFLIGHT_TOOL_DRAINED",
+    "checkpoint_recovery": "UNSUPPORTED_RECOVERY_REQUIRED_NEW_ATTEMPT",
+    "dangerous_tools_disabled": "PASS_EXPLICIT_MIDDLEWARE_AND_TOOL_ALLOWLIST",
+    "structured_draft": "PASS_SCHEMA_SCOPE_ISSUED_EVIDENCE",
+    "budget": "PASS_MODEL_TOOL_RECORD_TOKEN_WALL_CLOCK",
+    "live_model_branches": "BLOCKED_NO_CONFIGURED_MODELS"
+  },
+  "validation_report": "docs/pharma-runtime-validation.md",
+  "probed_source_sha256": {
+    "backend/packages/harness/deerflow/agents/factory.py": "de8cd07add3fdbd327c68102c5bcc55b5171ad47214903ff560b1a1ae98128e2",
+    "backend/packages/harness/deerflow/client.py": "1e6bc833d6735ec957ebabbd65df2bc5cbddb31011170522bb020f90ebb9c6fc",
+    "backend/packages/harness/deerflow/models/factory.py": "1ecfbdbd018eadad297892cb3aac49cecf24d006d79ef8fbd530c8b74f0d5aab"
   }
 }

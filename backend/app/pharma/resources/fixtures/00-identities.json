@@ -1,0 +1,34 @@
+{
+  "is_demo": true,
+  "workspace": {
+    "id": "dee59b72-2cb2-5255-934c-b44a3fd8911c",
+    "name": "PharmaScope 演示研究组",
+    "timezone": "Asia/Shanghai"
+  },
+  "second_workspace": {
+    "id": "b9c9d1b4-62c5-5b58-92d1-de56235db31d",
+    "name": "隔离测试组",
+    "timezone": "America/Los_Angeles"
+  },
+  "users": [
+    {
+      "id": "dacd1189-f315-5985-98ae-dce1a533104c",
+      "email": "analyst@pharmascope.invalid",
+      "display_name": "演示分析员",
+      "role": "analyst"
+    },
+    {
+      "id": "830a0c39-02ed-53a8-9616-c4d7827fb9ad",
+      "email": "reviewer@pharmascope.invalid",
+      "display_name": "演示审核员",
+      "role": "reviewer"
+    },
+    {
+      "id": "95023655-2f60-587d-834b-eabaa2e759af",
+      "email": "admin@pharmascope.invalid",
+      "display_name": "演示管理员",
+      "role": "admin"
+    }
+  ],
+  "seed_password_policy": "loader must generate or accept local-only demo password; never seed into live"
+}

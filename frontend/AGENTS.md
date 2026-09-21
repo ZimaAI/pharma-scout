@@ -21,6 +21,53 @@ DeerFlow Frontend is a Next.js 16 web interface for an AI agent system. It commu
 upstream dependency chain resolves a patched version without it; regenerate
 `pnpm-lock.yaml` and verify the docs build when changing this constraint.
 
+## PharmaScope workspace
+
+The domain frontend lives in `src/app/pharma/`, `src/components/pharma/`, and
+`src/core/pharma/`. The root page redirects to `/pharma`; `/workspace` retains the
+general assistant. Read the repository [design.md](../design.md) before changing
+domain pages. Shared Pharma styles are scoped to `.pharma-app` and `--ph-*`; do
+not alter the existing assistant theme to implement a domain page.
+
+- `core/pharma/contracts.ts` is generated from the reference OpenAPI and JSON
+  schemas. Run `backend/.venv/bin/python scripts/generate_pharma_contracts.py`
+  from the repo root after a contract change; `--check` detects drift. Do not
+  hand-edit or format the generated output.
+- `core/pharma/client.ts` owns same-origin `/api/pharma/v1` requests, the
+  `auth/me` CSRF token, idempotency and revision headers, and persistent API
+  errors. Pharma authentication is independent of the general assistant.
+- `components/pharma/context.tsx` scopes TanStack Query resources and mutations
+  to the active workspace. `useResource` accepts workspace-relative paths;
+  `request` adds the workspace prefix. Never use credentials or fixed workspace
+  IDs in client source. Switching workspace must reset page-local edit state.
+- `components/pharma/ui.tsx` and the shell provide shared source/status badges,
+  coverage, evidence drawers, loading/empty/error states, and role-aware
+  navigation. Preserve exact source date precision and visibly separate DEMO
+  replay from LIVE data. No model configured means LIVE research is unavailable;
+  deployment is intentionally allowed before real-model quality acceptance.
+- `components/pharma/research-pages.tsx` owns research, report and review flows.
+  Research events use authenticated same-origin SSE with native Last-Event-ID
+  reconnect and sequence deduplication; historical clarification frames must not
+  stop a resumed stream. Only durable event/tool summaries are displayed, never
+  hidden model reasoning. Approval sends the displayed immutable version/hash;
+  authors and version editors cannot self-review. A 409 must preserve edits.
+- Domain lists use API cursor pagination and canonical `query` filters. Filter
+  changes reset the cursor. Source evidence is opened through the evidence
+  drawer; source URLs are restricted to official domains. Render research
+  content as escaped text, not unsanitized HTML.
+
+App Router page params are promises in this installed Next.js version. Put
+client pages using `useSearchParams` inside a Suspense boundary. For module-local
+framework changes, consult `node_modules/next/dist/docs/` first.
+
+Domain DOM tests are in `tests/unit/pharma/`; run
+`pnpm exec rstest run tests/unit/pharma tests/unit/components/pharma tests/unit/core/pharma`. Real API/worker/PostgreSQL browser flows
+are in `tests/e2e-pharma/` with `playwright.pharma.config.ts`. These intentionally
+do not mock the API. See [deployment instructions](../docs/pharma-deployment-handoff.md)
+for preparing the isolated stack and private credentials. Keep traces, videos,
+and authentication failure snapshots disabled so credentials cannot become test
+artifacts.
+
 ## Commands
 
 | Command          | Purpose                                       |
