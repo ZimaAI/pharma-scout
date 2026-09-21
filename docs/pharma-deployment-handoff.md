@@ -16,8 +16,8 @@
 | Pharma PostgreSQL 16 | 用户 systemd：`pharmascope-postgres` | `127.0.0.1:15432` |
 | Pharma worker | 用户 systemd：`pharmascope-worker` | `python -m app.pharma.worker`，无监听端口 |
 
-数据库用户服务已经启用并运行。worker 单元已安装；编写本交接时仍保持
-disabled/inactive，须在后端验收通过后由发布步骤启用。
+数据库与 worker 用户服务均已经 enabled/active，正式部署时先停止了临时
+worker，再启用持久用户服务。
 
 数据库和私有环境位于 `.deer-flow/pharma/`，目录 `0700`、环境文件
 `private.env` 为 `0600`。应用角色 `pharma_app` 为非超级用户，独立拥有
@@ -169,5 +169,48 @@ JSON/Markdown 导出与不可变哈希、站内通知打开指定版本。引用
 18 张实际截图已更新至上述私有截图目录，文件名为
 `dashboard-*`、`drugs-*`、`trials-*`、`reports-*`、`published-report-*`、
 `evidence-drawer-*`，各覆盖三个视口。浏览器宿主安装可信发行版的 Noto CJK
-字体后重新截图，中文正常；字体未打包进前端。此结果只证明隔离生产产物及
-真实本机后端验收通过；生产切换仍需在提交推送完成后执行并另记实际结果。
+字体后重新截图，中文正常；字体未打包进前端。此结果证明隔离生产产物及
+真实本机后端验收通过；随后的公网切换与复验记录如下。
+
+## 本次正式更新记录
+
+2026-09-21 21:04（Asia/Shanghai，13:04 UTC）完成正式切换，部署的功能提交为
+`ce98725b12eb73aec1e685d46dec5b8e5c1a14d9`，已先推送 `origin/main`。
+正式 `frontend/.next/BUILD_ID` 为 `VCCPkjbupDUif5wuKuguZ`。
+
+切换前的新鲜一致性备份位于
+`.deer-flow/pharma/backups/20260921T130035Z-release-ce98725b/`：
+`pharmascope.dump`、`deerflow.sqlite`、私有配置副本、旧前端 `frontend-next/`、
+`release.json` 和 `sha256.json`。目录权限为 `0700`，配置和数据库备份为
+`0600`。私有发布元数据另存 `.deer-flow/pharma/release-current.json`。
+
+实际重启方式是核对系统服务的 MainPID、UID、cwd、可执行文件和回环监听端口
+后，仅向两个已核实的主进程发送 `SIGKILL`，由现有 systemd
+`Restart=on-failure` 恢复；未修改 Nginx 或其他项目。前端通过目录重命名切换
+已经验证的产物，旧目录保留在备份内。本次没有触发回退。
+
+| 服务 | 更新后 MainPID | 验收时状态 |
+| --- | --- | --- |
+| `pharmascount-gateway` | `1870958` | 系统服务 active/running |
+| `pharmascount-frontend` | `1870957` | 系统服务 active/running |
+| `pharmascope-postgres` | `1691739` | 用户服务 enabled/active |
+| `pharmascope-worker` | `1871529` | 用户服务 enabled/active |
+
+PID 仅为本次记录，后续操作必须重新核验。临时 API `18003`、代理 `13027`、
+Next `13028` 和临时 worker 已按登记的所有者、cwd、命令逐项确认并停止；
+这些临时端口已释放，PostgreSQL 和正式 worker 保持运行。
+
+公网 `https://pharmascount.zimagent.top` 使用同一套真实浏览器测试复验：
+**8 passed，27.3 秒，退出码 0**。日志为
+`/tmp/pharma-browser-public-final.log`，并归档到
+`.deer-flow/pharma/verification/20260921/pharma-browser-public-final.log`；
+该目录 `sha256.json` 保留此前九份记录并加入这份公网日志。
+三尺寸截图也已由公网复验刷新。DEMO 研究通过正式 worker 完成事件流、独立审核、
+发布、导出和站内通知；LIVE 仍显示真实的缺模型状态，没有外发邮件。
+
+额外 HTTPS 检查通过：`/` 跳转 `/pharma/dashboard`；原管理员通过原登录接口
+访问 `/workspace`，最终到达 `/workspace/chats/new`，返回 200；原 `/health`、
+`/health/ready` 与 Pharma `healthz`、`readyz` 均为 200。Pharma 会话 Cookie
+包含 Secure、HttpOnly、SameSite=Lax 和 `/api/pharma` 路径；缺少必填 CSRF
+头在契约层返回 422，错误 token 或 Origin 返回 403，有效退出返回 200，退出后
+`auth/me` 返回 401。脱敏检查记录在 `.deer-flow/pharma/public-smoke.json`。

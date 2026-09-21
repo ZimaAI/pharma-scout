@@ -1,10 +1,11 @@
 # 软件测试结果记录
 
-记录日期：2026-09-21。测试基于个人仓库基线提交
-`c8796e41b0cc2e3132c5514035b2e015017ead89` 加各次执行时的未提交工作树；
-这里不填写尚未产生的最终提交 SHA。固定 DeerFlow 上游为
+记录日期：2026-09-21。开发阶段测试基于个人仓库基线提交
+`c8796e41b0cc2e3132c5514035b2e015017ead89` 加各次执行时的工作树；最终功能
+提交为 `ce98725b12eb73aec1e685d46dec5b8e5c1a14d9`，已推送至 `origin/main`。
+固定 DeerFlow 上游为
 `29d285731b326a728a9df33d3641f73b68bbe48b`，详见
-[upstream.lock.json](upstream.lock.json)。后续提交、生产构建和部署结果由最终交付步骤补录。
+[upstream.lock.json](upstream.lock.json)。生产产物及公网部署验收分别记录。
 
 环境：Python 3.12.3、Node.js 24.17.0、pnpm 10.26.2、PostgreSQL 16；
 Playwright 1.59.1 / Chromium headless shell 147.0.7727.15。后端使用
@@ -29,6 +30,8 @@ Playwright 1.59.1 / Chromium headless shell 147.0.7727.15。后端使用
 | F-BUILD 最终生产构建 | **PASSED**，退出码 0 | `/tmp/pharma-production-build-final.log`；隔离目录 Next.js `build --webpack`，含 TypeScript 检查；BUILD_ID `VCCPkjbupDUif5wuKuguZ` |
 | E-DEV 开发栈真实浏览器 | **PARTIAL / 存在失败记录**，详见第 4 节 | 同源真实 API、PostgreSQL 与 worker；无 API mock；不能将各次部分结果合并称为完整 8 项通过 |
 | E-PROD 最终生产产物 8 项浏览器门 | **8 passed、0 failed**；24.8 秒，退出码 0 | `/tmp/pharma-browser-production-final.log`；上述构建产物经 13027 同源代理连接真实 API、PG 和 worker；严格焦点恢复、导航和研究发布全旅程通过 |
+| E-PUBLIC 部署后公网完整浏览器门 | **8 passed、0 failed**；27.3 秒，退出码 0 | `/tmp/pharma-browser-public-final.log`；同一配置直接访问 `https://pharmascount.zimagent.top`，使用正式 Gateway、Frontend、PG 和 worker |
+| D-PUBLIC 公网健康与会话安全 | **PASSED** | 首页跳转 `/pharma/dashboard`；既有 `/health`、`/health/ready` 与 Pharma 两个探针均 200；Cookie 安全属性正确、错误 CSRF/Origin 均 403、有效退出 200 后原会话 401 |
 | R-LIVE 真实模型 A/B/C 分支 | **BLOCKED：models=[]** | 未配置模型，未调用真实 LLM；没有真实输出质量评分或重复稳定性评测 |
 | SMTP 真实/本地 SMTP 传输 | **NOT_RUN**；真实外发关闭 | 订阅/outbox/unknown/重试由内存 SMTP 替身及真实 PG 验证；不声称已通过 Mailpit 或真实邮箱投递 |
 
@@ -119,12 +122,12 @@ SSE 去重与异任务隔离、历史澄清重放、LIVE 缺模型禁用、时�
 
 | 实际尝试 | 结果 | 原始证据 |
 | --- | --- | --- |
-| 三视口布局 | **3 passed，30.1 秒**；1440×900、1024×768、390×844 的工作台/药物/试验/报告无页面溢出 | `/tmp/pharma-browser-layout.log`；原主机 CJK 字体缺失后已安装 Noto，最终产物截图仍待重新采集 |
+| 三视口布局 | **3 passed，30.1 秒**；1440×900、1024×768、390×844 的工作台/药物/试验/报告无页面溢出 | `/tmp/pharma-browser-layout.log`；当时主机 CJK 字体缺失，其后已补齐 Noto 并于 E-PROD/E-PUBLIC 重采截图 |
 | 真实登录和主路由 | 登录专项通过；11 个主页面及药物/试验详情曾实际渲染；合并场景曾因测试误设 D3 已有文献而失败，已修正为 D4 首次文献 | 不将路由观察替代完整场景通过 |
 | LIVE 无模型提示 | 独立用例通过（4.7 秒） | 原工作流日志已被后续重跑覆盖；不伪造可恢复日志 |
 | 订阅预览/创建/暂停切换 | 独立真实工作流通过（5.5 秒） | `/tmp/pharma-browser-workflows.log` |
-| 研究回放至报告发布/导出 | 真实 SSE、引用、独立审核、发布、JSON/Markdown 导出与版本哈希核对均实际执行；该次最终因浮点宽度 `390.00003 > 390` 断言失败 | `/tmp/pharma-browser-research.log`；已改为合理的 1px 容差，仍需完整重跑 |
-| 引用抽屉键盘焦点 | 严格回归曾因 Escape 后焦点未回到引用按钮而真实失败；已补显式焦点恢复，不能仅凭代码修复宣称浏览器通过 | `/tmp/pharma-browser-research-focus.log`；最终生产回归待跑，保留严格断言 |
+| 研究回放至报告发布/导出 | 真实 SSE、引用、独立审核、发布、JSON/Markdown 导出与版本哈希核对均实际执行；该次最终因浮点宽度 `390.00003 > 390` 断言失败 | `/tmp/pharma-browser-research.log`；已改为合理的 1px 容差，最终完整重跑见 E-PROD/E-PUBLIC |
+| 引用抽屉键盘焦点 | 严格回归曾因 Escape 后焦点未回到引用按钮而真实失败；已补显式焦点恢复 | `/tmp/pharma-browser-research-focus.log`；保留严格断言，其后 E-PROD/E-PUBLIC 均通过 |
 | 最近一次开发栈完整 8 项尝试 | **1 passed、1 failed、6 未运行**；导航加载超时中止，导航等待已调整 | `/tmp/pharma-browser-dev-final.log`；开发 HMR/资源竞争不能替代最终生产门 |
 
 在 `frontend/` 的完整与专项命令：
@@ -140,7 +143,7 @@ PHARMA_E2E_BASE_URL=http://127.0.0.1:13027 \
 本地截图及报告输出位于忽略目录 `.deer-flow/pharma/e2e/`。不保存登录 trace、录像、
 Cookie/storageState 或未掩码认证错误截图。原始日志保留在 `/tmp` 或忽略目录，
 不提交可能含环境细节的文件；三个最终后端日志权限为 0600。
-九份最终构建、检查及测试日志另已归档至私有目录
+十份最终构建、检查、本机及公网测试日志另已归档至私有目录
 `.deer-flow/pharma/verification/20260921/`，附 `sha256.json`，避免仅依赖临时目录。
 
 最终生产产物单次完整运行 **8 passed（24.8 秒）**：真实登录、11 个主路由及
@@ -151,6 +154,14 @@ Cookie/storageState 或未掩码认证错误截图。原始日志保留在 `/tmp
 抽屉；主机补齐 Noto CJK 后中文可正常显示，人工复查桌面与手机工作台及手机
 证据抽屉。字体仅安装在验收主机，没有打包进应用。
 
+部署切换后以 `PHARMA_E2E_BASE_URL=https://pharmascount.zimagent.top` 执行
+同一套完整配置，**8 passed（27.3 秒）**。这是相同 8 个用例的第二个环境运行，
+不是额外 8 个独立场景。公网使用正式 systemd 服务和同一 BUILD_ID，包含真实
+DEMO 事件流、独立审核、发布和站内投递。原 `/workspace` 在未登录时仍按既有
+逻辑跳转 `/login`；使用原管理员登录后到达 `/workspace/chats/new`，返回 200。
+会话 Cookie 的 Secure、HttpOnly、SameSite=Lax 与
+Path=/api/pharma 均实际检查，错误 CSRF 与 Origin 被拒绝。
+
 ## 5. 发布范围与未验证项
 
 用户已明确选择“先部署项目，真实模型稍后配置”，允许继续生产构建和部署更新。
@@ -160,6 +171,10 @@ Cookie/storageState 或未掩码认证错误截图。原始日志保留在 `/tmp
 
 真实 SMTP 未启用，未向真实邮箱发信；开发 SMTP 网络传输也未执行。
 accepted/read/unknown 等 outbox 行为已通过替身和数据库验证，但不等于真实邮件送达。
-最终生产构建、8 项完整浏览器门已通过；服务切换及公网健康检查由部署步骤补录。
+最终生产构建、本机及公网完整浏览器门、服务切换与公网健康检查均已通过。
+Gateway/Frontend 已加载功能提交 `ce98725b`，独立 PostgreSQL 与 worker 用户服务
+均启用；更新前的数据库、SQLite、私有配置与旧前端产物保存在
+`.deer-flow/pharma/backups/20260921T130035Z-release-ce98725b/`。
+实际部署与回退步骤见 [部署交接](../../../pharma-deployment-handoff.md)。
 文档包 JSON/引用/合同检查见 [CONTEXT_VALIDATION.md](CONTEXT_VALIDATION.md)，
 其结果不能替代本记录的运行时或浏览器验收。

@@ -149,5 +149,23 @@ headless shell，并真实启动验证浏览器版本 `147.0.7727.15`。
 宿主 Noto CJK 字体来自可信发行版软件包，没有加入前端资产。未记录浏览器
 Cookie、storageState、trace 或视频。本轮只追加 DEMO 验收资料，未重置数据库。
 用户明确选择先部署、后配置模型；该验收不能视为模型 LIVE 验收或
-`V1_RELEASE_READY`。此时正式服务仍未切换；实际更新及回退记录见
-`docs/pharma-deployment-handoff.md`。
+`V1_RELEASE_READY`。
+
+## 正式部署复验
+
+2026-09-21 21:04（Asia/Shanghai），功能提交 `ce98725b` 已先推送 main，随后
+将同一 BUILD_ID 切换到正式服务。新鲜 PostgreSQL、SQLite、私有配置和旧前端
+备份位于 `.deer-flow/pharma/backups/20260921T130035Z-release-ce98725b/`。
+仅在核对进程归属、cwd、命令和监听端口后触发本项目两个系统服务失败自恢复；
+更新后的 Gateway/Frontend PID 分别为 `1870958`、`1870957`。用户 worker 已
+enabled/active，PID `1871529`；数据库用户服务保持 enabled/active。
+登记的临时 API、代理、Next 和 worker 已全部停止，临时三个端口已释放。
+
+同套 E2E 指向公网 HTTPS 后 **8 passed，27.3 秒，退出码 0**，日志归档到
+`.deer-flow/pharma/verification/20260921/pharma-browser-public-final.log`，
+已追加 SHA-256 校验值并保留原有九条记录。三视口截图由这次公网复验刷新。
+首页跳转 `/pharma/dashboard`；原管理员登录后 `/workspace` 正常到达
+`/workspace/chats/new`；原健康与新领域探针全部 200。Cookie 安全属性、
+CSRF/Origin 拒绝和有效退出后的会话撤销通过额外 HTTPS 验证。
+没有改动 Nginx、系统 PostgreSQL 或其他项目，没有触发回退。详细步骤、备份
+与实际服务状态见 `docs/pharma-deployment-handoff.md`。
