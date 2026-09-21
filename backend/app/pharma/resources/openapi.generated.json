@@ -1,14 +1,14 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "PharmaScope API",
+    "title": "PharmaScount API",
     "version": "1.0.0",
-    "description": "Implemented PharmaScope API. All business resources are workspace scoped and authenticated; report evidence is validated server-side."
+    "description": "Implemented PharmaScount API. All business resources are workspace scoped and authenticated; report evidence is validated server-side."
   },
   "servers": [
     {
       "url": "/",
-      "description": "Same-origin PharmaScope deployment"
+      "description": "Same-origin PharmaScount deployment"
     }
   ],
   "security": [

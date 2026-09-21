@@ -392,4 +392,4 @@ See [configuration](docs/CONFIGURATION.md), [architecture](docs/ARCHITECTURE.md)
 [paths](docs/PATH_EXAMPLES.md), [summarization](docs/summarization.md) and
 [plan mode](docs/plan_mode_usage.md).
 
-PharmaScope: [app/pharma/AGENTS.md](app/pharma/AGENTS.md).
+PharmaScount: [app/pharma/AGENTS.md](app/pharma/AGENTS.md).

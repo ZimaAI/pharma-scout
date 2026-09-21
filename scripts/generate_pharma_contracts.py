@@ -55,7 +55,7 @@ def ts_type(schema):
 def generate():
     data = specification()
     data["servers"] = [
-        {"url": "/", "description": "Same-origin PharmaScope deployment"}
+        {"url": "/", "description": "Same-origin PharmaScount deployment"}
     ]
     data["paths"] = {
         "/api/pharma" + key if key in ("/healthz", "/readyz") else key: value

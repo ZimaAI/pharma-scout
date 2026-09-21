@@ -1,6 +1,6 @@
-# PharmaScope domain
+# PharmaScount domain
 
-## PharmaScope domain application
+## PharmaScount domain application
 
 `app/pharma/` owns public drug intelligence, trial/publication snapshots, evidence,
 research, independent report review, subscriptions and durable delivery. The
@@ -47,3 +47,7 @@ existing general assistant remains at `/workspace`. Domain worker and PostgreSQL
 commands: `make migrate`, `make seed-demo`, `make pharma-worker`, `make pharma-test`,
 `make test-e2e`, `make verify-docs`. Demo credentials are generated privately; never
 publish them in frontend code or use replay to claim live model verification.
+
+The public brand is PharmaScount. Existing database/service names and account
+identifiers remain stable. `seed-demo` recognizes the old branded workspace name
+and renames that workspace in place instead of creating a second one.

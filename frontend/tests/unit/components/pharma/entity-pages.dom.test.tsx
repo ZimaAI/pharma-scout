@@ -117,7 +117,7 @@ beforeEach(() => {
 });
 afterEach(cleanup);
 
-describe("PharmaScope entity and subscription integration boundaries", () => {
+describe("PharmaScount entity and subscription integration boundaries", () => {
   test("reader sees an explicit subscription permission state without a protected query", () => {
     render(
       <QueryClientProvider client={new QueryClient()}>

@@ -1,4 +1,23 @@
-# PharmaScope 本机部署交接
+# PharmaScount 本机部署交接
+
+## 当前状态（2026-09-22）
+
+用户因本机资源不足撤销了本次更新部署要求，要求只完成编码、提交推送并停止
+本项目。品牌修改尚未部署；未完成的构建、检查和浏览器验收不再继续。
+Gateway、Frontend、Pharma worker、项目独立 PostgreSQL 已全部停止，相关
+`13026/13027/13028/15432/18001/18003` 端口均无监听。数据库与配置保留。
+
+用户级 `pharmascope-worker`、`pharmascope-postgres` 已 disable。
+系统级 `pharmascount-gateway`、`pharmascount-frontend` 当前 inactive/dead，
+但仍 enabled：当前账户没有免密 sudo，systemctl 禁用被拒绝（需要交互鉴权）。
+为了避免它们在下次开机恢复，需要管理员执行：
+
+```bash
+sudo systemctl disable --now pharmascount-frontend.service pharmascount-gateway.service
+```
+
+未修改共享 Nginx 或其他项目。下文为此前部署的历史交接记录；不代表本项目
+目前仍在运行。历史数据库、服务和账户标识保持原名，不因品牌更名自动迁移。
 
 此文只记录已核查的本机环境与更新步骤。业务接口和客户端联调以根目录
 `BACKEND_HANDOFF.md`、`backend/app/pharma/resources/openapi.yaml` 为准。

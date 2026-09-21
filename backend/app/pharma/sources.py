@@ -1,4 +1,4 @@
-"""Bounded, read-only official source adapters for the PharmaScope domain.
+"""Bounded, read-only official source adapters for the PharmaScount domain.
 
 Only identifiers and search terms cross the tool boundary; endpoint selection,
 credentials, limits and retry policy remain server owned. These envelopes do
@@ -335,7 +335,7 @@ class PharmaSources:
         request_budget: float = 60.0,
         sleep: Callable[[float], Awaitable[None]] = asyncio.sleep,
     ):
-        self._client = client or httpx.AsyncClient(timeout=httpx.Timeout(30.0, connect=10.0), follow_redirects=False, trust_env=False, headers={"User-Agent": "PharmaScope/1.0 (public research metadata)"})
+        self._client = client or httpx.AsyncClient(timeout=httpx.Timeout(30.0, connect=10.0), follow_redirects=False, trust_env=False, headers={"User-Agent": "PharmaScount/1.0 (public research metadata)"})
         self._ncbi_params = {"db": "pubmed", "tool": ncbi_tool}
         if ncbi_api_key:
             self._ncbi_params["api_key"] = ncbi_api_key

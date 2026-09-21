@@ -16,7 +16,7 @@ export function DesignPreview() {
       <PageHeader
         eyebrow="DESIGN SYSTEM / V1.0"
         title="清晰呈现，有据可循"
-        description="PharmaScope 组件与状态预览 · 全部示例仅用于界面检查"
+        description="PharmaScount 组件与状态预览 · 全部示例仅用于界面检查"
         actions={<button className="ph-button">发起研究</button>}
       />
       <div className="ph-grid">

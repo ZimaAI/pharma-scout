@@ -223,7 +223,7 @@ down:
 prod-logs:
 	@$(RUN_SHELL_SCRIPT) ./scripts/docker.sh logs --prod
 
-# PharmaScope domain workflow; the original full-stack targets remain intact.
+# PharmaScount domain workflow; the original full-stack targets remain intact.
 .PHONY: migrate seed-demo pharma-worker pharma-test test test-e2e verify-docs
 migrate:
 	@backend/.venv/bin/python scripts/pharma.py migrate

@@ -1,4 +1,4 @@
--- PharmaScope V1 PostgreSQL reference schema.
+-- PharmaScount V1 PostgreSQL reference schema.
 -- NOT executed in PostgreSQL during document generation. Convert to Alembic and test.
 BEGIN;
 

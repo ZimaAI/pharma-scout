@@ -1,4 +1,4 @@
-"""Bound the existing DeerFlow agent loop to authenticated PharmaScope tools.
+"""Bound the existing DeerFlow agent loop to authenticated PharmaScount tools.
 
 The graph is created per run with the upstream pure-argument factory and explicit
 middleware takeover. No configured generic tools, sandbox, memory or MCP enter it.

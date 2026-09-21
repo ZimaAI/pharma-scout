@@ -72,6 +72,55 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Shared by every route, including the original DeerFlow workspace. */
+:root {
+  --site-footer-height: calc(28px + env(safe-area-inset-bottom, 0px));
+  --site-content-height: calc(100dvh - var(--site-footer-height));
+}
+
+body {
+  padding-bottom: var(--site-footer-height);
+}
+
+.site-icp-footer {
+  position: fixed;
+  inset: auto 0 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--site-footer-height);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  border-top: 1px solid var(--border);
+  background: var(--background);
+  color: var(--muted-foreground);
+  font-size: 12px;
+  line-height: 1;
+}
+
+.site-icp-footer a:hover {
+  color: var(--foreground);
+  text-decoration: underline;
+}
+
+.site-icp-footer a:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 3px;
+}
+
+/* Reserve the footer in existing full-height shells and fixed sidebars. */
+.h-screen,
+.h-svh,
+.h-dvh {
+  height: var(--site-content-height);
+}
+
+.min-h-screen,
+.min-h-svh,
+.min-h-dvh {
+  min-height: var(--site-content-height);
+}
+
 @keyframes streaming-list-marker-fade-in {
   from {
     color: transparent;

@@ -57,7 +57,7 @@ const emptyPreview = async (): Promise<SchedulePreview> => ({
   occurrences: [],
 });
 
-describe("PharmaScope entity forms", () => {
+describe("PharmaScount entity forms", () => {
   test("saves explicit research tags and leaves unknown optional fields null", async () => {
     const save = rs.fn(async () => undefined);
     render(<DrugForm busy={false} onCancel={() => undefined} onSave={save} />);
@@ -131,7 +131,7 @@ describe("PharmaScope entity forms", () => {
   });
 });
 
-describe("PharmaScope subscription form", () => {
+describe("PharmaScount subscription form", () => {
   test("preserves ISO Sunday and clears weekday only when switching to daily", async () => {
     const save = rs.fn(async () => undefined);
     render(

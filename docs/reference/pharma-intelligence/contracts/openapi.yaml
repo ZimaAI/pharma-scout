@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: PharmaScope API
+  title: PharmaScount API
   version: 1.0.0
   description: Target implementation contract; not an already running service. All
     IDs are workspace scoped and authenticated. ResearchOutput evidence references

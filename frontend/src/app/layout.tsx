@@ -2,6 +2,7 @@ import "@/styles/globals.css";
 
 import { type Metadata } from "next";
 
+import { IcpFooter } from "@/components/icp-footer";
 import { ThemeProvider } from "@/components/theme-provider";
 import { DEFAULT_LOCALE } from "@/core/i18n/locale";
 
@@ -22,6 +23,7 @@ export default function RootLayout({
       <body>
         <ThemeProvider attribute="class" enableSystem disableTransitionOnChange>
           {children}
+          <IcpFooter />
         </ThemeProvider>
       </body>
     </html>

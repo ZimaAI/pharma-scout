@@ -178,3 +178,20 @@ Gateway/Frontend 已加载功能提交 `ce98725b`，独立 PostgreSQL 与 worker
 实际部署与回退步骤见 [部署交接](../../../pharma-deployment-handoff.md)。
 文档包 JSON/引用/合同检查见 [CONTEXT_VALIDATION.md](CONTEXT_VALIDATION.md)，
 其结果不能替代本记录的运行时或浏览器验收。
+# 2026-09-22 品牌更名验证补记
+
+用户要求停止测试、构建和部署后，未再执行此类操作。以下是收到停止指令前
+工具输出已经确认的结果，不代表最终完整验收通过：
+
+- Pharma 后端聚合：159 passed、2 deselected（含品牌兼容回归）。
+- Pharma 前端及备案组件单元测试：31 passed。
+- 后端 blocking-I/O：修改前 149 passed，修改后 149 passed。
+- 后端全量离线：修改前已出现 DeerFlow 注册/登录失败，停止时
+  1839 passed、16 failed；修改后以首个失败停止，1437 passed、1 failed。
+  两次共有失败为 `test_api_login_success_no_token_in_body`（401，预期 200）。
+- 后端格式化：通过，1602 files left unchanged。
+- 前端完整 check：启动过，但未取得最终通过结果；不标为通过。
+- 生产构建：首次因 Nextra 从错误工作目录解析而失败；调整目录后的构建
+  未完成。本次没有切换正式产物。
+- 新增品牌/备案浏览器回归与原业务 E2E：NOT_RUN。
+- 最终版本不再重跑测试；后续如需验证，请在资源充足的环境单独执行。

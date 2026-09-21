@@ -20,7 +20,7 @@
     sans-serif;
   font-size: 14px;
   line-height: 1.6;
-  min-height: 100dvh;
+  min-height: var(--site-content-height);
   -webkit-font-smoothing: antialiased;
 }
 .pharma-app * {
@@ -111,7 +111,7 @@
 }
 .ph-shell {
   display: flex;
-  min-height: 100dvh;
+  min-height: var(--site-content-height);
 }
 .ph-sidebar {
   width: 232px;
@@ -119,7 +119,7 @@
   background: var(--ph-sidebar);
   color: #d8e1f0;
   position: fixed;
-  inset: 0 auto 0 0;
+  inset: 0 auto var(--site-footer-height) 0;
   display: flex;
   flex-direction: column;
   z-index: 30;
@@ -131,13 +131,13 @@
   gap: 9px;
   color: #fff;
 }
-.ph-brand svg {
+.ph-brand img {
   flex-shrink: 0;
   color: #c9d5ff;
 }
 .ph-brand strong {
   display: block;
-  font-size: 21px;
+  font-size: 20px;
   font-weight: 700;
   line-height: 1.25;
   letter-spacing: -0.7px;
@@ -1298,7 +1298,7 @@
 .ph-login {
   display: grid;
   grid-template-columns: 1.05fr 1fr;
-  min-height: 100dvh;
+  min-height: var(--site-content-height);
 }
 .ph-login-story {
   padding: 48px 8%;
@@ -1409,7 +1409,7 @@
   max-width: 370px;
 }
 .ph-auth-loading {
-  min-height: 100dvh;
+  min-height: var(--site-content-height);
   display: flex;
   flex-direction: column;
   align-items: center;

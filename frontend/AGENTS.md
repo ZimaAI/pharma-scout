@@ -21,7 +21,15 @@ DeerFlow Frontend is a Next.js 16 web interface for an AI agent system. It commu
 upstream dependency chain resolves a patched version without it; regenerate
 `pnpm-lock.yaml` and verify the docs build when changing this constraint.
 
-## PharmaScope workspace
+## PharmaScount workspace
+
+Brand assets live in `public/pharma/brand/`; `components/pharma/logo.tsx` owns
+the wordmark. Only the Pharma layout overrides icons and metadata. Keep the
+original DeerFlow branding and favicon on other routes. The root layout renders
+`IcpFooter` on every page. Full-height shells reserve `--site-footer-height`
+through `--site-content-height`, including fixed sidebars and mobile safe areas.
+The README poster is `docs/assets/pharmascount/poster.png`; do not inline it into
+README until requested.
 
 The domain frontend lives in `src/app/pharma/`, `src/components/pharma/`, and
 `src/core/pharma/`. The root page redirects to `/pharma`; `/workspace` retains the

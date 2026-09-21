@@ -1,4 +1,4 @@
-# PharmaScope 运行时适配验证
+# PharmaScount 运行时适配验证
 
 验证日期：2026-09-21。此记录区分真实 DeerFlow 图的离线兼容性探针与真实模型验收。
 

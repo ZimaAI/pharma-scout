@@ -1,4 +1,4 @@
-"""PharmaScope API with its own authentication boundary and executable contract."""
+"""PharmaScount API with its own authentication boundary and executable contract."""
 
 import asyncio
 import json
@@ -19,7 +19,7 @@ from .db import digest, now, transaction, uid
 from .errors import PharmaError, require
 
 logger = logging.getLogger(__name__)
-app = FastAPI(title="PharmaScope", docs_url="/api/pharma/docs", openapi_url="/api/pharma/openapi.json", redoc_url=None)
+app = FastAPI(title="PharmaScount", docs_url="/api/pharma/docs", openapi_url="/api/pharma/openapi.json", redoc_url=None)
 app.openapi = specification
 IDEMPOTENT = {"runs_create", "sources_sync", "subscriptions_trigger", "reports_publish", "runs_retry"}
 TERMINAL = {"completed", "partial", "failed", "cancelled", "recovery_required", "awaiting_input"}

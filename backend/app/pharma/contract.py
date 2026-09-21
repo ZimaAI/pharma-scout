@@ -15,8 +15,8 @@ from .errors import PharmaError, require
 def specification():
     data = yaml.safe_load((Path(__file__).parent / "resources/openapi.yaml").read_text(encoding="utf-8"))
     data["paths"] = {("/api/pharma" + key if key in ("/healthz", "/readyz") else key.replace("/api/v1", "/api/pharma/v1")): value for key, value in data["paths"].items()}
-    data["servers"] = [{"url": "/", "description": "Same-origin PharmaScope deployment"}]
-    data["info"]["description"] = "Implemented PharmaScope API. All business resources are workspace scoped and authenticated; report evidence is validated server-side."
+    data["servers"] = [{"url": "/", "description": "Same-origin PharmaScount deployment"}]
+    data["info"]["description"] = "Implemented PharmaScount API. All business resources are workspace scoped and authenticated; report evidence is validated server-side."
     return data
 
 

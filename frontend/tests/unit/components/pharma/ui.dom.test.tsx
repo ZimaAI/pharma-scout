@@ -5,7 +5,7 @@ import { Badge, DateText, Field } from "@/components/pharma/ui";
 
 afterEach(cleanup);
 
-describe("PharmaScope accessible clinical presentation", () => {
+describe("PharmaScount accessible clinical presentation", () => {
   test("keeps the field label separate from its accessible description", () => {
     render(
       <Field label="研究日期" hint="保留来源提供的日期精度。">

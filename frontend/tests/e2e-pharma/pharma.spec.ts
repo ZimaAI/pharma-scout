@@ -227,6 +227,10 @@ test("all authorized product routes read the real API", async ({
   ]) {
     await page.goto(`/pharma/${route}`, { waitUntil: "domcontentloaded" });
     await expect(page.getByRole("main")).toBeVisible();
+    await expect(
+      page.getByRole("link", { name: "浙ICP备2026076087号-1", exact: true }),
+    ).toBeInViewport();
+    await expect(page).toHaveTitle(/PharmaScount/);
     await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
     await expect(page.locator(".ph-loading")).toHaveCount(0);
     await expect(page.getByText("404", { exact: true })).toHaveCount(0);

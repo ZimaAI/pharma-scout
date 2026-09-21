@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""PharmaScope commands without changing the existing root setup/dev workflow."""
+"""PharmaScount commands without changing the existing root setup/dev workflow."""
 
 import os
 import subprocess

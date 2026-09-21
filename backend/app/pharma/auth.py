@@ -1,4 +1,4 @@
-"""Independent, revocable PharmaScope sessions with workspace role checks."""
+"""Independent, revocable PharmaScount sessions with workspace role checks."""
 
 import hmac
 import os

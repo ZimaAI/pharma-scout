@@ -1,4 +1,4 @@
-# PharmaScope 后端交接
+# PharmaScount 后端交接
 
 2026-09-21。H 后端交接已完成：在后端接口及真实 PostgreSQL 闭环验证通过后，
 明确 H-complete，再开始业务前端。根目录 [design.md](design.md) 已沉淀为实现规范，

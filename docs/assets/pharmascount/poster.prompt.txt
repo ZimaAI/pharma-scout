@@ -1,0 +1,9 @@
+Generated with the built-in image_gen tool; logo.png supplied as a reference.
+
+Use case: ads-marketing
+Asset type: wide landscape 16:9 README project poster, finished polished graphic.
+Primary request: Design a restrained premium visual identity poster for PharmaScount, a medical R&D intelligence workspace for tracking clinical trials, scientific literature, traceable evidence, and independent human review.
+Input image: reference image only — the project's actual logo. Preserve this exact blue rounded-square white P and pale-cyan molecular-node logo, place it next to the wordmark near upper left. Do not redesign the mark.
+Composition: sophisticated editorial typography, dark midnight navy #142138 background, generous margins, left half clear and legible text, right half a luminous sculptural network of molecular nodes and thin research trajectories, with a handful of floating abstract evidence cards. No fake application screenshot, no fake metrics, no charts claiming real results. Fine blueprint grid, controlled cobalt #315EFB and icy cyan highlights, elegant depth, no excessive glow. Overall clean and credible scientific software branding.
+Text (verbatim): Main brand large "PharmaScount" (spell exactly P h a r m a S c o u n t). Chinese subtitle "医药研发情报". Main Chinese statement "让每一条研发进展，都有据可循。" Lower feature line "临床试验追踪  /  科学文献检索  /  证据溯源  /  独立审核". Small footer "POWERED BY DEERFLOW".
+Constraints: All text sharply rendered, correct simplified Chinese, ample whitespace, no other text, no watermark, no human figures, no drug packaging. The output is the poster image itself, not a poster in a room.

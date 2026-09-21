@@ -1,5 +1,7 @@
 # 当前实施状态
 
+- 2026-09-22 最新状态：品牌更名为 PharmaScount，新增 logo、Pharma 专用浏览器图标、全站备案栏与海报，README 未修改。用户因本机资源不足要求停止测试、构建和部署，只提交推送代码；本次修改未部署，浏览器验收未执行。四个本项目服务均已停止，worker/PG 已禁用自启动；系统级前端/Gateway 的禁用需要管理员权限，详见 `docs/pharma-deployment-handoff.md`。以下 M0–M6 为此前交付历史。
+
 - 执行模式：end-to-end（用户明确授权后端先行、前端、提交推送、更新已有部署）。
 - M0：已确认真实上游 SHA、现有 harness factory 与工具注入；实际模型未配置。
 - M1–M4：源码、PostgreSQL Alembic、独立会话/RBAC、来源适配、快照观察/事件/证据、研究与SSE、版本审核/发布、排程/投递实现。

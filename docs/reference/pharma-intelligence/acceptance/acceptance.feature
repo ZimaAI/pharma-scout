@@ -1,4 +1,4 @@
-Feature: PharmaScope V1 research intelligence acceptance
+Feature: PharmaScount V1 research intelligence acceptance
 
   @T01
   Scenario: 首次抓取仅建立基线

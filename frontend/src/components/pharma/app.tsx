@@ -40,6 +40,7 @@ import { WorkspaceProvider, usePharma } from "./context";
 import { Dashboard } from "./dashboard";
 import { DesignPreview } from "./design-preview";
 import { EvidenceDrawer } from "./evidence-drawer";
+import { PharmaLogo as Logo } from "./logo";
 import { Badge, Empty, ErrorPanel, Field, Loading } from "./ui";
 
 const DrugsPage = dynamic(
@@ -111,31 +112,6 @@ const InboxPage = dynamic(
   () => import("./settings-pages").then((module) => module.InboxPage),
   { loading: Loading },
 );
-
-function Logo() {
-  return (
-    <div className="ph-brand">
-      <svg viewBox="0 0 36 36" width="36" height="36" aria-hidden="true">
-        <path
-          d="M18 6 29 12.5v13L18 32 7 25.5v-13L18 6Zm0 0v13m-11 6.5 11-6.5 11 6.5"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.8"
-        />
-        <circle cx="18" cy="6" r="4" fill="#6E8BFF" />
-        <circle cx="7" cy="25.5" r="4" fill="#8ABAFB" />
-        <circle cx="29" cy="25.5" r="4" fill="#6179F3" />
-        <circle cx="18" cy="19" r="3" fill="currentColor" />
-      </svg>
-      <div>
-        <strong>
-          Pharma<span>Scope</span>
-        </strong>
-        <small>医药研发情报</small>
-      </div>
-    </div>
-  );
-}
 
 export function PharmaApp({ path }: { path: string[] }) {
   const me = useQuery({
@@ -232,7 +208,7 @@ function LoginPage() {
             </span>
           </div>
         </div>
-        <small>PHARMASCOPE · POWERED BY DEERFLOW</small>
+        <small>PHARMASCOUNT · POWERED BY DEERFLOW</small>
       </section>
       <section className="ph-login-form-area">
         <form className="ph-login-form" onSubmit={login}>
@@ -433,7 +409,7 @@ function PharmaShell({
           <span>通用研究助手</span>
           <ArrowRight size={14} />
         </Link>
-        <small>PharmaScope · 基于 DeerFlow</small>
+        <small>PharmaScount · 基于 DeerFlow</small>
       </div>
     </>
   );

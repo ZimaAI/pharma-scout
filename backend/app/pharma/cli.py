@@ -34,8 +34,11 @@ def seed_demo(day=3, account_file=None):
     from .seed import seed
 
     with transaction() as repo:
-        workspaces = repo.rows("workspace", name="PharmaScope 演示研究组")
-        workspace = workspaces[0] if workspaces else repo.add("workspace", name="PharmaScope 演示研究组", settings={"data_mode": "demo"})
+        name = "PharmaScount 演示研究组"
+        workspaces = repo.rows("workspace", name=name) or repo.rows("workspace", name="PharmaScope 演示研究组")
+        workspace = workspaces[0] if workspaces else repo.add("workspace", name=name, settings={"data_mode": "demo"})
+        if workspace["name"] != name:
+            workspace = repo.update("workspace", workspace["id"], name=name)
         isolated = repo.rows("workspace", name="隔离验证组")
         if not isolated:
             repo.add("workspace", name="隔离验证组", settings={"data_mode": "demo"})

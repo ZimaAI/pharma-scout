@@ -3,7 +3,7 @@
 把本包全部文件放进项目根目录，然后复制以下内容。必须让编码工具能实际读取整个目录，而不是只收到一句项目名称。
 
 ```text
-请根据当前仓库的 PharmaScope 文档包实现“医药研发情报与临床试验进展研究平台”V1。
+请根据当前仓库的 PharmaScount 文档包实现“医药研发情报与临床试验进展研究平台”V1。
 
 本次授权模式：end-to-end。先实际读取 AGENTS.md、README.md、docs/00-baseline.md、
 docs/14-implementation-plan.md 和 delivery/STATE.md，再按任务读取其余规格、契约和测试资料。
@@ -37,7 +37,7 @@ demo的回放不等于真实Agent；缺模型密钥或联网失败时，在交�
 
 ## 新会话恢复
 ```text
-继续实现当前 PharmaScope 项目。先读 AGENTS.md 和 delivery/STATE.md，再检查 Git 状态、
+继续实现当前 PharmaScount 项目。先读 AGENTS.md 和 delivery/STATE.md，再检查 Git 状态、
 当前阶段的规格和上次测试结果。以磁盘事实为准，从未完成任务继续，不重建已有模块。
 保持此前记录的执行模式；不要把未运行测试改成通过。
 ```
