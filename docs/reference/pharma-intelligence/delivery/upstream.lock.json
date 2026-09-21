@@ -1,0 +1,16 @@
+{
+  "repository": "https://github.com/bytedance/deer-flow",
+  "target_line": "2.x",
+  "commit_sha": null,
+  "observed_docs_on": "2026-09-21",
+  "status": "NEEDS_M0_VERIFICATION",
+  "python_version": null,
+  "node_version": null,
+  "probe_results": {
+    "custom_tool": "NOT_RUN",
+    "trusted_context": "NOT_RUN",
+    "cancellation": "NOT_RUN",
+    "checkpoint_recovery": "NOT_RUN",
+    "dangerous_tools_disabled": "NOT_RUN"
+  }
+}

@@ -1,0 +1,8 @@
+# Fixtures使用规则
+全部资料为原创虚构数据；不包含真实药物研究事实或真实患者。DEMO ID严禁发到官方API。
+
+先加载00身份、01药物、04逻辑试验记录（先不设置current外键），再按场景日逐个加载02中的快照和03观察。禁止一次性载入全部未来快照后声称通过历史回放测试。05虚构文献仅D4出现；加载时创建kind=publication、source=pubmed、external_id=DEMO-PM-001的source_record，并关联PX-101。
+06证据中的JSON Pointer相对于整个SourceSnapshot对象，不是raw_payload；quote为该路径标量的规范化显示文本。07请求只研究D3以前，08不得引用D4证据。09是显式replay事件脚本，不是当前真实模型轨迹。
+10为最低期望；实现者需扩展完整测试集。seed过程按文件中的稳定UUID upsert、校验workspace，生成本机demo口令，不对live数据库执行。
+
+11-events-and-revisions.json为D3预期事件结构；回放可按稳定UUID写入，真实增量算法用相同业务identity但无需生成相同UUID。08仅覆盖enrollment事件，不能把未呈现的status事件也标已交付。

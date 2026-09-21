@@ -1,0 +1,22 @@
+{
+  "is_demo": true,
+  "timeline": {
+    "observation_count": 5,
+    "unique_trial_snapshot_count": 3,
+    "D2_new_business_changes": 0,
+    "D3_changed_paths": [
+      "/enrollment/count",
+      "/status"
+    ],
+    "D4_current_enrollment": 150,
+    "D5_reused_snapshot_id": "6d3076c2-eb02-5775-85a8-e503646289e4"
+  },
+  "required_denials": [
+    "cross_workspace_evidence",
+    "self_review",
+    "publish_old_hash",
+    "demo_external_fetch",
+    "source_failure_as_no_change"
+  ],
+  "report_initial_cutoff": "2026-09-16T12:00:00Z"
+}

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "330cc932-3bdb-5ea8-8006-c3f8f5ed530d",
+    "workspace_id": "dee59b72-2cb2-5255-934c-b44a3fd8911c",
+    "created_at": "2026-09-14T08:00:00Z",
+    "snapshot_id": "6d3076c2-eb02-5775-85a8-e503646289e4",
+    "locator": {
+      "kind": "json_pointer",
+      "path": "/normalized/enrollment/count"
+    },
+    "quoted_text": "120",
+    "snippet_hash": "2abaca4911e68fa9bfbf3482ee797fd5b9045b841fdff7253557c5fe15de6477",
+    "original_language": "en",
+    "translation_text": null,
+    "extractor_version": "demo-locator-v1"
+  },
+  {
+    "id": "d02d63c2-b5ec-52ef-b96a-61552b947249",
+    "workspace_id": "dee59b72-2cb2-5255-934c-b44a3fd8911c",
+    "created_at": "2026-09-16T08:00:00Z",
+    "snapshot_id": "a52263c2-74fb-5aa8-9dd8-fbd12fc51902",
+    "locator": {
+      "kind": "json_pointer",
+      "path": "/normalized/enrollment/count"
+    },
+    "quoted_text": "160",
+    "snippet_hash": "a512db2741cd20693e4b16f19891e72b9ff12cead72761fc5e92d2aaf34740c1",
+    "original_language": "en",
+    "translation_text": null,
+    "extractor_version": "demo-locator-v1"
+  },
+  {
+    "id": "3eda9d46-0d75-5c2a-86e3-d91d4b2fdf52",
+    "workspace_id": "dee59b72-2cb2-5255-934c-b44a3fd8911c",
+    "created_at": "2026-09-16T08:00:00Z",
+    "snapshot_id": "a52263c2-74fb-5aa8-9dd8-fbd12fc51902",
+    "locator": {
+      "kind": "json_pointer",
+      "path": "/normalized/status"
+    },
+    "quoted_text": "ACTIVE_NOT_RECRUITING",
+    "snippet_hash": "ff474873440aa6d3be16a20c752c14c03e6d46d97d5554d6a8d99c199093f4fd",
+    "original_language": "en",
+    "translation_text": null,
+    "extractor_version": "demo-locator-v1"
+  },
+  {
+    "id": "1509f8e8-ce81-5072-a3ce-ec13fae44a3f",
+    "workspace_id": "dee59b72-2cb2-5255-934c-b44a3fd8911c",
+    "created_at": "2026-09-17T08:00:00Z",
+    "snapshot_id": "a1ec229b-4119-55d1-8b7c-b9380a84d8f5",
+    "locator": {
+      "kind": "json_pointer",
+      "path": "/normalized/enrollment/count"
+    },
+    "quoted_text": "150",
+    "snippet_hash": "9ae2bdd7beedc2e766c6b76585530e16925115707dc7a06ab5ee4aa2776b2c7b",
+    "original_language": "en",
+    "translation_text": null,
+    "extractor_version": "demo-locator-v1"
+  }
+]

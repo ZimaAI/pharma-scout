@@ -1,0 +1,57 @@
+{
+  "id": "958a1eba-ef3c-533f-85c6-3964822eb5de",
+  "workspace_id": "dee59b72-2cb2-5255-934c-b44a3fd8911c",
+  "created_at": "2026-09-17T08:00:00Z",
+  "record_id": "5e4c7e97-d764-586b-86b3-bbfc04fcbc4b",
+  "content_hash": "a029748fa729663de9e9fa1a41e2a1b304625bf84750e3e3cd6bfefd76e3f8ad",
+  "normalizer_version": "demo-pubmed-v1",
+  "raw_payload": {
+    "demo_only": true,
+    "external_id": "DEMO-PM-001",
+    "projection": {
+      "title": "PX-101研究记录更新说明（虚构文献）",
+      "authors": [
+        "Demo Author"
+      ],
+      "journal": "Demonstration Records",
+      "doi": null,
+      "pmid": "DEMO-PM-001",
+      "publication_date": {
+        "value": "2026-09",
+        "precision": "month",
+        "kind": "source_reported"
+      },
+      "abstract_text": "本摘要仅说明虚构记录的目标入组人数被更正。它不提供任何药物疗效、安全性或监管批准结论。",
+      "publication_types": [
+        "DEMO_NOTE"
+      ],
+      "correction_relations": []
+    }
+  },
+  "normalized": {
+    "title": "PX-101研究记录更新说明（虚构文献）",
+    "authors": [
+      "Demo Author"
+    ],
+    "journal": "Demonstration Records",
+    "doi": null,
+    "pmid": "DEMO-PM-001",
+    "publication_date": {
+      "value": "2026-09",
+      "precision": "month",
+      "kind": "source_reported"
+    },
+    "abstract_text": "本摘要仅说明虚构记录的目标入组人数被更正。它不提供任何药物疗效、安全性或监管批准结论。",
+    "publication_types": [
+      "DEMO_NOTE"
+    ],
+    "correction_relations": []
+  },
+  "source_updated": {
+    "value": "2026-09-17",
+    "precision": "day",
+    "kind": "source_reported"
+  },
+  "first_observed_at": "2026-09-17T08:00:00Z",
+  "is_demo": true
+}

@@ -1,0 +1,72 @@
+{
+  "is_demo": true,
+  "events": [
+    {
+      "id": "88b8df10-42db-552f-ad59-dbaf938fac4d",
+      "workspace_id": "dee59b72-2cb2-5255-934c-b44a3fd8911c",
+      "created_at": "2026-09-16T08:00:00Z",
+      "record_id": "5955a8ed-90e9-58d8-8c40-98d7a005598e",
+      "category": "enrollment_change",
+      "title": "虚构记录目标入组数量调整",
+      "latest_revision_id": "2f97c548-4f0c-504d-aa1e-66da3dbcc4d6",
+      "updated_at": "2026-09-16T08:00:00Z"
+    },
+    {
+      "id": "ebc8b66d-061d-5ce5-8867-a852e171c4fa",
+      "workspace_id": "dee59b72-2cb2-5255-934c-b44a3fd8911c",
+      "created_at": "2026-09-16T08:00:00Z",
+      "record_id": "5955a8ed-90e9-58d8-8c40-98d7a005598e",
+      "category": "status_change",
+      "title": "虚构记录招募状态调整",
+      "latest_revision_id": "ebb27bf1-049d-5757-a013-a3107632bb4d",
+      "updated_at": "2026-09-16T08:00:00Z"
+    }
+  ],
+  "revisions": [
+    {
+      "id": "2f97c548-4f0c-504d-aa1e-66da3dbcc4d6",
+      "workspace_id": "dee59b72-2cb2-5255-934c-b44a3fd8911c",
+      "created_at": "2026-09-16T08:00:00Z",
+      "event_id": "88b8df10-42db-552f-ad59-dbaf938fac4d",
+      "revision_no": 1,
+      "before_observation_id": "f6c18a16-446d-505f-8abb-9522ad276d1b",
+      "after_observation_id": "8c479557-bccd-51eb-b5c7-cf9ecddd2504",
+      "changes": [
+        {
+          "path": "/enrollment/count",
+          "type": "changed",
+          "before": 120,
+          "after": 160
+        }
+      ],
+      "evidence_ids": [
+        "330cc932-3bdb-5ea8-8006-c3f8f5ed530d",
+        "d02d63c2-b5ec-52ef-b96a-61552b947249"
+      ],
+      "severity": "important",
+      "observed_at": "2026-09-16T08:00:00Z"
+    },
+    {
+      "id": "ebb27bf1-049d-5757-a013-a3107632bb4d",
+      "workspace_id": "dee59b72-2cb2-5255-934c-b44a3fd8911c",
+      "created_at": "2026-09-16T08:00:00Z",
+      "event_id": "ebc8b66d-061d-5ce5-8867-a852e171c4fa",
+      "revision_no": 1,
+      "before_observation_id": "f6c18a16-446d-505f-8abb-9522ad276d1b",
+      "after_observation_id": "8c479557-bccd-51eb-b5c7-cf9ecddd2504",
+      "changes": [
+        {
+          "path": "/status",
+          "type": "changed",
+          "before": "RECRUITING",
+          "after": "ACTIVE_NOT_RECRUITING"
+        }
+      ],
+      "evidence_ids": [
+        "3eda9d46-0d75-5c2a-86e3-d91d4b2fdf52"
+      ],
+      "severity": "important",
+      "observed_at": "2026-09-16T08:00:00Z"
+    }
+  ]
+}

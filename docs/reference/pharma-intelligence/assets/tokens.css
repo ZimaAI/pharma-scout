@@ -1,0 +1,13 @@
+:root {
+  --background: #F6F8FC; --surface: #FFFFFF; --surface-muted: #F0F3F9;
+  --primary: #315EFB; --primary-hover: #254BDC; --primary-soft: #EEF2FF;
+  --accent: #6D5AE6; --text-primary: #17243B; --text-secondary: #52617A;
+  --text-muted: #6B7890; --border: #DDE4EF; --success: #157347;
+  --warning: #9A5700; --danger: #BC2D3E; --info: #225AA7;
+  --sidebar: #142138; --sidebar-text: #E6ECF7;
+  --radius-control: 8px; --radius-card: 12px; --radius-dialog: 16px;
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px;
+  --space-6: 24px; --space-8: 32px; --space-12: 48px;
+  --font-sans: Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+}
+/* Integrate into the actual Tailwind/shadcn theme during implementation; this file alone is not a UI. */

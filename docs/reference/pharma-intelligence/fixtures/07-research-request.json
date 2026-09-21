@@ -1,0 +1,22 @@
+{
+  "question": "整理PX-101演示记录在本次时间窗中的试验变化，列明证据与资料缺口。",
+  "drug_ids": [
+    "dd1dcb81-e4b6-5343-b4a6-544bf716d867"
+  ],
+  "time_range": {
+    "start": "2026-09-14T00:00:00Z",
+    "end_exclusive": "2026-09-17T00:00:00Z",
+    "timezone": "Asia/Shanghai"
+  },
+  "source_allowlist": [
+    "ctgov",
+    "pubmed"
+  ],
+  "budget": {
+    "max_tool_calls": 30,
+    "max_model_calls": 12,
+    "max_wall_seconds": 600,
+    "max_records": 200
+  },
+  "parent_run_id": null
+}

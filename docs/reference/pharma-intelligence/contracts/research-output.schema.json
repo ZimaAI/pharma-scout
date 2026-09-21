@@ -1,0 +1,331 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pharmascope.invalid/contracts/research-output.schema.json",
+  "$ref": "#/$defs/ResearchOutput",
+  "$defs": {
+    "ResearchOutput": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "1.0"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "scope": {
+          "$ref": "#/$defs/ResearchScope"
+        },
+        "coverage": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Coverage"
+          },
+          "minItems": 1,
+          "maxItems": 2
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "heading": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              },
+              "text": {
+                "type": "string",
+                "maxLength": 8000
+              },
+              "claim_keys": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^C[1-9][0-9]*$"
+                }
+              }
+            },
+            "required": [
+              "heading",
+              "text",
+              "claim_keys"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1,
+          "maxItems": 12
+        },
+        "claims": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ClaimDraft"
+          },
+          "minItems": 1,
+          "maxItems": 60
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          },
+          "minItems": 1,
+          "maxItems": 30
+        },
+        "unanswered_questions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000
+          },
+          "maxItems": 30
+        },
+        "event_revision_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Id"
+          },
+          "maxItems": 100,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "schema_version",
+        "title",
+        "summary",
+        "scope",
+        "coverage",
+        "sections",
+        "claims",
+        "limitations",
+        "unanswered_questions",
+        "event_revision_ids"
+      ],
+      "additionalProperties": false
+    },
+    "ClaimDraft": {
+      "type": "object",
+      "properties": {
+        "claim_key": {
+          "type": "string",
+          "pattern": "^C[1-9][0-9]*$"
+        },
+        "statement": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "fact",
+            "hypothesis",
+            "gap"
+          ]
+        },
+        "qualifiers": {
+          "type": "object",
+          "properties": {
+            "population": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "trial_ids": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Id"
+              }
+            },
+            "time_scope": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "limitations": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "population",
+            "trial_ids",
+            "time_scope",
+            "limitations"
+          ],
+          "additionalProperties": false
+        },
+        "evidence_links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/EvidenceLink"
+          },
+          "maxItems": 20
+        }
+      },
+      "required": [
+        "claim_key",
+        "statement",
+        "category",
+        "qualifiers",
+        "evidence_links"
+      ],
+      "additionalProperties": false
+    },
+    "EvidenceLink": {
+      "type": "object",
+      "properties": {
+        "evidence_id": {
+          "$ref": "#/$defs/Id"
+        },
+        "relation": {
+          "type": "string",
+          "enum": [
+            "supports",
+            "contradicts",
+            "context"
+          ]
+        }
+      },
+      "required": [
+        "evidence_id",
+        "relation"
+      ],
+      "additionalProperties": false
+    },
+    "Id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "Coverage": {
+      "type": "object",
+      "properties": {
+        "source": {
+          "$ref": "#/$defs/Source"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "complete",
+            "partial",
+            "failed",
+            "not_requested"
+          ]
+        },
+        "records_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "truncated": {
+          "type": "boolean"
+        },
+        "as_of": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Timestamp"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000
+          }
+        }
+      },
+      "required": [
+        "source",
+        "status",
+        "records_count",
+        "truncated",
+        "as_of",
+        "limitations"
+      ],
+      "additionalProperties": false
+    },
+    "Timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "Source": {
+      "type": "string",
+      "enum": [
+        "ctgov",
+        "pubmed"
+      ]
+    },
+    "ResearchScope": {
+      "type": "object",
+      "properties": {
+        "drug_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Id"
+          },
+          "minItems": 1,
+          "maxItems": 5
+        },
+        "time_range": {
+          "$ref": "#/$defs/TimeRange"
+        },
+        "knowledge_cutoff": {
+          "$ref": "#/$defs/Timestamp"
+        }
+      },
+      "required": [
+        "drug_ids",
+        "time_range",
+        "knowledge_cutoff"
+      ],
+      "additionalProperties": false
+    },
+    "TimeRange": {
+      "type": "object",
+      "properties": {
+        "start": {
+          "$ref": "#/$defs/Timestamp"
+        },
+        "end_exclusive": {
+          "$ref": "#/$defs/Timestamp"
+        },
+        "timezone": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        }
+      },
+      "required": [
+        "start",
+        "end_exclusive",
+        "timezone"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

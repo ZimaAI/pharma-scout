@@ -1,0 +1,42 @@
+{
+  "id": "5955a8ed-90e9-58d8-8c40-98d7a005598e",
+  "workspace_id": "dee59b72-2cb2-5255-934c-b44a3fd8911c",
+  "created_at": "2026-09-14T08:00:00Z",
+  "source": "ctgov",
+  "external_id": "DEMO-CT-001",
+  "kind": "trial",
+  "canonical_url": "demo://trial/DEMO-CT-001",
+  "current_snapshot_id": "6d3076c2-eb02-5775-85a8-e503646289e4",
+  "current_observation_id": "7ca587a2-5042-5cc3-8a45-29b6980c69fb",
+  "updated_at": "2026-09-14T08:00:00Z",
+  "is_demo": true,
+  "current_projection": {
+    "title": "PX-101演示适应证A试验（完全虚构）",
+    "raw_status": "RECRUITING",
+    "status": "RECRUITING",
+    "phases": [
+      "PHASE2"
+    ],
+    "conditions": [
+      "演示适应证A"
+    ],
+    "sponsor": "虚构研究组织",
+    "enrollment": {
+      "count": 120,
+      "type": "estimated"
+    },
+    "has_results": false,
+    "source_updated": {
+      "value": "2026-09-14",
+      "precision": "day",
+      "kind": "source_reported"
+    },
+    "primary_outcomes": [
+      {
+        "measure": "演示终点字段",
+        "description": "仅用于结构测试，无真实临床含义",
+        "time_frame": "演示窗口"
+      }
+    ]
+  }
+}

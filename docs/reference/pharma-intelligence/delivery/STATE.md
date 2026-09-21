@@ -1,0 +1,12 @@
+# 当前实施状态
+- 文档版本：1.0.0
+- 当前阶段：SPECIFIED_DOCUMENTS（仅文档与合同已生成）
+- 执行模式：未授权编码；由实施者接到CODEX_START指令后记录stage-gated或end-to-end。
+- 平台代码：NOT_IMPLEMENTED
+- 数据库迁移运行：NOT_RUN
+- DeerFlow适配探针：NOT_RUN
+- 官方数据源live：NOT_RUN
+- 模型真实研究：NOT_RUN
+- 浏览器E2E：NOT_RUN
+- 当前下一步：M0检查仓库、锁真实上游SHA、依赖与最小工具/上下文探针。
+- 文档结构自检：由本包 `delivery/CONTEXT_VALIDATION.md` 记录，不等于软件验收。
