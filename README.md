@@ -1,5 +1,8 @@
 # 🦌 DeerFlow - 2.0
 
+> Pharma Scout is a personal project based on DeerFlow. Development uses a single
+> `main` branch. See the [Pharma Scout development guide](DEVELOPMENT_zh.md).
+
 English | [中文](./README_zh.md) | [日本語](./README_ja.md) | [Français](./README_fr.md) | [Русский](./README_ru.md)
 
 [![Python](https://img.shields.io/badge/Python-3.12%2B-3776AB?logo=python&logoColor=white)](./backend/pyproject.toml)

@@ -286,9 +286,13 @@ Nginx (port 2026) ← Unified entry point
 
 ## Development Workflow
 
-1. **Create a feature branch**:
+Pharma Scout is a personal project with a single `main` branch. See
+[DEVELOPMENT_zh.md](DEVELOPMENT_zh.md) for the local workflow and upstream sync.
+
+1. **Sync main** (commit any local changes first):
    ```bash
-   git checkout -b feature/your-feature-name
+   git switch main
+   git pull --ff-only origin main
    ```
 
 2. **Make your changes** with hot-reload enabled
@@ -312,9 +316,9 @@ Nginx (port 2026) ← Unified entry point
    git commit -m "feat: description of your changes"
    ```
 
-6. **Push and create a Pull Request**:
+6. **Push main**:
    ```bash
-   git push origin feature/your-feature-name
+   git push origin main
    ```
 
 ## AI assistance disclosure

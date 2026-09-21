@@ -6,25 +6,21 @@
 ## 仓库与分支
 
 - `origin`：`https://github.com/ZimaAI/pharma-scout.git`，自己的开发成果推送到这里。
-- `upstream`：`https://github.com/bytedance/deer-flow.git`，用于获取官方更新。
-- `main`：稳定分支，初始化时对应上游基线；功能验证后再合入。
-- `develop`：二次开发集成分支，包含本指南。
-- `feature/*`、`fix/*`：从 `develop` 创建的功能、修复分支。
+- `upstream`：可选远程 `https://github.com/bytedance/deer-flow.git`，用于获取官方更新。
+- `main`：本个人项目唯一的工作分支，开发、修复、验证和发布均在此进行。
 
-这些是工作约定，尚未设置 GitHub 分支保护。
+直接在 `main` 提交并推送，无需创建功能分支或走分支间 PR 合并流程。
 
 ```bash
-git switch develop
-git pull --ff-only origin develop
-git switch -c feature/drug-search
+git switch main
+git pull --ff-only origin main
 # 修改代码并运行相关检查
 git add <本次修改的文件>
 git commit -m "feat: add drug search"
-git push -u origin feature/drug-search
+git push origin main
 ```
 
-在自己的 GitHub 仓库创建 PR，目标分支选择 `develop`；准备发布时，再提交
-`develop` → `main` 的 PR。不要向 `upstream` 推送自己的业务代码。
+自己的业务代码只推送到 `origin/main`。不要向 `upstream` 推送业务代码。
 
 ## 本地启动
 
@@ -102,21 +98,22 @@ pnpm test
 
 ## 同步官方更新
 
-先确保工作区干净，从最新 `develop` 创建专门的同步分支：
+先提交本地改动并确保工作区干净，在 `main` 上合并官方更新。
+首次同步前，如尚未配置 `upstream`，运行
+`git remote add upstream https://github.com/bytedance/deer-flow.git`。
 
 ```bash
-git switch develop
-git pull --ff-only origin develop
+git switch main
+git pull --ff-only origin main
 git fetch upstream
-git switch -c chore/sync-upstream-YYYYMMDD
 git merge upstream/main
 # 如有冲突：处理文件，git add <已处理文件>，然后 git commit
 # 检查配置迁移和 CHANGELOG，运行相关测试
-git push -u origin chore/sync-upstream-YYYYMMDD
+git push origin main
 ```
 
-将同步分支通过 PR 合入 `develop`，验证后再合入 `main`。本地配置需要更新时，
-先备份再运行 `make config-upgrade` 并检查结果。保留共享分支提交历史，避免强制推送。
+验证通过后直接推送 `main`。本地配置需要更新时，先备份再运行
+`make config-upgrade` 并检查结果。保留提交历史，避免强制推送。
 
 ## 换机器继续开发
 
@@ -124,7 +121,7 @@ git push -u origin chore/sync-upstream-YYYYMMDD
 git clone https://github.com/ZimaAI/pharma-scout.git
 cd pharma-scout
 git remote add upstream https://github.com/bytedance/deer-flow.git
-git switch develop
+git switch main
 ```
 
 随后按“本地启动”重新生成配置、安装依赖并填写模型凭据。

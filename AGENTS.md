@@ -1,5 +1,12 @@
 # AGENTS.md
 
+## Pharma Scout branch workflow
+
+This personal project uses `main` as its only working branch. Develop, commit,
+sync upstream changes, and push directly on `main`; do not create additional
+branches unless the user explicitly requests one. See
+[DEVELOPMENT_zh.md](DEVELOPMENT_zh.md) for the project workflow.
+
 This file provides guidance to AI coding agents (Claude Code, Codex, and others) when working with code in this repository. It is the source of truth; the sibling `CLAUDE.md` imports it via `@AGENTS.md`.
 
 It is the **monorepo orientation layer**: it maps the whole repo and points to the
